@@ -1,0 +1,2 @@
+ErrorDocument 404 /{HTTP_HOST}/er.html
+ErrorDocument 400 /400.html
