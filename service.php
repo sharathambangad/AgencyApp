@@ -1,5 +1,5 @@
 <?php
-include('admin/security.php');
+include('admin/config/dbconfig.php');
 $service_image_path = "admin/uploads/images/services/";
 ?>
 
