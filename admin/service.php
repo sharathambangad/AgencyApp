@@ -10,7 +10,7 @@ $image_upload_path = "uploads/images/";
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">
-        SERVICES
+        SERVICES 
     </h1>
 
     <button type="button" class="btn btn-primary mb-3 " data-toggle="modal" data-target="#addteamprofile">
@@ -52,12 +52,23 @@ $image_upload_path = "uploads/images/";
                                             <td><?php echo '<img src = "' . $image_upload_path . 'services/' . $row['service_image'] . '" width = "50px;" height = "50px;" alt = "SERVICE IMAGE">' ?></td>
                                             <td><?php echo $row['short_desc']; ?></td>
                                             <td>
-                                                <?php echo $row['description']; ?>
-                                                <a class="float-right" type="button" data-toggle="collapse" data-target="#detailDesc" aria-expanded="false" aria-controls="detailDesc">
+                                                <?php
+                                                    $content = $row['description'];
+                                                    $string = strip_tags($content);
+                                                    if(strlen($string)>200){
+                                                        $stringCut = substr($string,0,200);
+                                                        $endpoint = strpos($stringCut,' ');
+                                                        $string = $endpoint?substr($stringCut,0, $endpoint):substr($stringCut,0);
+                                                        $string.= '...<a class="float-right" type="button" data-toggle="collapse" data-target="#detailDesc'.$row['id'].'" aria-expanded="false" aria-controls="detailDesc">Read More</a>';
+                                                    }
+                                                    echo $string;
+                                                ?>
+                                                <!-- <?php //echo $row['description']; ?>
+                                                <a class="float-right" type="button" data-toggle="collapse" data-target="#detailDesc<?php //echo $row['id']; ?>" aria-expanded="false" aria-controls="detailDesc">
                                                     ...Read More
-                                                </a>
-                                                <div class="collapse" id="detailDesc">
-                                                    <?php echo $row['description']; ?>
+                                                </a> -->
+                                                <div class="collapse" id="detailDesc<?php echo $row['id']; ?>">
+                                                    <?php echo $row['description'];?>
                                                 </div>
                                             </td>
                                             <td><?php echo $row['seo_keywords']; ?></td>

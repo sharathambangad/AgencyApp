@@ -28,7 +28,7 @@ $image_upload_path = "uploads/images/";
                         $query = "SELECT * FROM portfolio";
                         $query_run = mysqli_query($connection, $query);
                         ?>
-                        <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-striped table-hover text-center" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th> ID </th>
@@ -50,11 +50,11 @@ $image_upload_path = "uploads/images/";
                                             <td>
                                                 <form action="portfolios_edit.php" method="post">
                                                     <input type="hidden" name="portfolio_edit_id" value="<?php echo $row['id']; ?>">
-                                                    <button type="submit" name="portfolio_edit_btn" class="btn btn-primary"> EDIT</button>
+                                                    <button type="submit" name="portfolio_edit_btn" class="btn btn-primary"> <i class="fa fa-edit"></i></button>
                                                 </form>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-danger portfolio_delete_btn" value="<?php echo $row['id']; ?>"> DELETE</button>
+                                                <button type="button" class="btn btn-danger portfolio_delete_btn" value="<?php echo $row['id']; ?>"> <i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                 <?php

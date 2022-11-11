@@ -20,7 +20,7 @@ include('includes/navbar.php');
                         $query = "SELECT * FROM contact_form";
                         $query_run = mysqli_query($connection, $query);
                         ?>
-                        <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-striped table-hover text-center" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th> ID </th>
@@ -45,7 +45,7 @@ include('includes/navbar.php');
                                             <td>
                                                 <form action="form-action.php" method="post">
                                                     <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
-                                                    <button type="button" class="btn btn-danger enq_delete_btn" value="<?php echo $row['id']; ?>"> DELETE</button>
+                                                    <button type="button" class="btn btn-danger enq_delete_btn" value="<?php echo $row['id']; ?>"> <i class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -64,7 +64,7 @@ include('includes/navbar.php');
             <!-- /.container-fluid -->
         </div>
     </div>
-            <?php
-            include('includes/scripts.php');
-            include('includes/footer.php');
-            ?>
+    <?php
+    include('includes/scripts.php');
+    include('includes/footer.php');
+    ?>

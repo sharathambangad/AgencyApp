@@ -1,11 +1,20 @@
+<?php
+include('admin/config/dbconfig.php');
+?>
 <!-- Footer start -->
 <footer id="footer" class="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-12 footer-widget">
-                <h3 class="widget-title">Recent Posts</h3>
+                <h3 class="widget-title">LOCATE US </h3>
 
-                <div class="latest-post-items media">
+                <div class="img-gallery">
+                    <div class="img-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.78033362144092!2d76.08781087222934!3d11.00216597921634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7caa72c9ac2c5%3A0xa48df6695e99c8a3!2sKolathur%20-%20Malappuram%20Rd%2C%20Kodur%2C%20Kerala%20676504!5e0!3m2!1sen!2sin!4v1635695355070!5m2!1sen!2sin" width="100%" height="290px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- <div class="latest-post-items media">
                     <div class="latest-post-content media-body">
                         <h4>
                             <a href="#">Bulgaria claims to find Europe's 'oldest town'</a>
@@ -15,10 +24,10 @@
                             <span class="post-meta-cat">in<a href="#"> Blog</a></span>
                         </p>
                     </div>
-                </div>
+                </div> -->
                 <!-- 1st Latest Post end -->
 
-                <div class="latest-post-items media">
+                <!-- <div class="latest-post-items media">
                     <div class="latest-post-content media-body">
                         <h4>
                             <a href="#">Few Answers in Case of Murdered Law Professor</a>
@@ -29,10 +38,10 @@
                                 <a href="#">03</a></span>
                         </p>
                     </div>
-                </div>
+                </div> -->
                 <!-- 2nd Latest Post end -->
 
-                <div class="latest-post-items media">
+                <!-- <div class="latest-post-items media">
                     <div class="latest-post-content media-body">
                         <h4>
                             <a href="#">Over the year we have lots of experience in our field</a>
@@ -43,7 +52,7 @@
                                 <a href="#">14</a></span>
                         </p>
                     </div>
-                </div>
+                </div> -->
                 <!-- 3rd Latest Post end -->
             </div>
             <!--/ End Recent Posts-->
@@ -84,30 +93,40 @@
                 </div>
             </div>
             <!--/ end flickr -->
+            <?php
+            $query = "SELECT * FROM address WHERE id =1";
+            $query_run = mysqli_query($connection, $query);
 
-            <div class="col-md-3 col-sm-12 footer-widget footer-about-us">
-                <h3 class="widget-title">About Craft</h3>
-                <p>
-                    We are a awward winning multinational company. We believe in
-                    quality and standard worldwide.
-                </p>
-                <h4>Address</h4>
-                <p>1102 Saint Marys, Junction City, KS</p>
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4>Email:</h4>
-                        <p>info@craftbd.com</p>
+            foreach ($query_run as $row) {
+            ?>
+                <div class="col-md-4 col-sm-12 footer-widget footer-about-us">
+                    <h3 class="widget-title">About ClickForDern</h3>
+                    <p style=" text-align: justify;text-justify: inter-word;">
+                        <?php echo $row['about_desc'] ?>
+                    </p>
+                    <h4>Address</h4>
+                    <p><?php echo $row['address'] ?></p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Phone No.</h4>
+                            <p>+(91) <?php echo $row['mobile1'] ?></p>
+                            <p>+(91) <?php echo $row['mobile2'] ?></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Email:</h4>
+                            <p><?php echo $row['email'] ?></p>
+                        </div>
+
+
                     </div>
-                    <div class="col-md-6">
-                        <h4>Phone No.</h4>
-                        <p>+(785) 238-4131</p>
-                    </div>
+
+                    <p>
+                        <a href="contact.php" class="btn btn-primary solid square">Reach Us <i class="fa fa-long-arrow-right"></i></a>
+                    </p>
                 </div>
-                <br>
-                <p>
-                    <a href="#" class="btn btn-primary solid square">Purchase Now <i class="fa fa-long-arrow-right"></i></a>
-                </p>
-            </div>
+            <?php
+            }
+            ?>
             <!--/ end about us -->
         </div>
         <!-- Row end -->
@@ -123,28 +142,35 @@
             <div class="col-md-12 text-center">
                 <ul class="footer-social unstyled">
                     <li>
-                        <a title="Twitter" href="#">
-                            <span class="icon-pentagon wow bounceIn"><i class="fa fa-twitter"></i></span>
-                        </a>
-                        <a title="Facebook" href="#">
-                            <span class="icon-pentagon wow bounceIn"><i class="fa fa-facebook"></i></span>
-                        </a>
-                        <a title="Google+" href="#">
-                            <span class="icon-pentagon wow bounceIn"><i class="fa fa-google-plus"></i></span>
-                        </a>
-                        <a title="linkedin" href="#">
-                            <span class="icon-pentagon wow bounceIn"><i class="fa fa-linkedin"></i></span>
-                        </a>
-                        <a title="Pinterest" href="#">
-                            <span class="icon-pentagon wow bounceIn"><i class="fa fa-pinterest"></i></span>
-                        </a>
-                        <a title="Skype" href="#">
-                            <span class="icon-pentagon wow bounceIn"><i class="fa fa-skype"></i></span>
-                        </a>
-                        <a title="Dribble" href="#">
-                            <span class="icon-pentagon wow bounceIn"><i class="fa fa-dribbble"></i></span>
-                        </a>
+                        <?php
+                        $query = "SELECT * FROM address WHERE id =1";
+                        $query_run = mysqli_query($connection, $query);
+
+                        foreach ($query_run as $row) {
+                        ?>
+                            <a title="Twitter" href="<?php echo $row['twitter'] ?>">
+                                <span class="icon-pentagon wow bounceIn"><i class="fa fa-twitter"></i></span>
+                            </a>
+                            <a title="Facebook" href="<?php echo $row['facebook'] ?>">
+                                <span class="icon-pentagon wow bounceIn"><i class="fa fa-facebook"></i></span>
+                            </a>
+                            <a title="Google+" href="mailto:<?php echo $row['google'] ?>">
+                                <span class="icon-pentagon wow bounceIn"><i class="fa fa-google-plus"></i></span>
+                            </a>
+                            <a title="linkedin" href="<?php echo $row['linkedin'] ?>">
+                                <span class="icon-pentagon wow bounceIn"><i class="fa fa-linkedin"></i></span>
+                            </a>
+                            <a title="Pinterest" href="<?php echo $row['pintrest'] ?>">
+                                <span class="icon-pentagon wow bounceIn"><i class="fa fa-pinterest"></i></span>
+                            </a>
+                            <a title="Discord" href="<?php echo $row['discord'] ?>">
+                                <span class="icon-pentagon wow bounceIn"><i class="fa fa-discord"></i></span>
+                            </a>
+
                     </li>
+                <?php
+                        }
+                ?>
                 </ul>
             </div>
         </div>
@@ -152,7 +178,9 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="copyright-info">
-                    © Copyright 2021 - All Rights Reserved
+                    Copyright © ClickForDern 2022. All Rights Reserved.
+                    <br>
+                    Developed By : ClickForDern
                 </div>
             </div>
         </div>

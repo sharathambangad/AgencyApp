@@ -10,7 +10,7 @@ $image_upload_path = "uploads/images/";
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">
-        TEAM PROFILES
+        TEAM PROFILES <i class="fas fa-fw fa-users"></i>
     </h1>
 
     <button type="button" class="btn btn-primary mb-3 " data-toggle="modal" data-target="#addteamprofile">
@@ -27,7 +27,7 @@ $image_upload_path = "uploads/images/";
                         $query = "SELECT * FROM about_us";
                         $query_run = mysqli_query($connection, $query);
                         ?>
-                        <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-striped table-hover text-center" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th> ID </th>

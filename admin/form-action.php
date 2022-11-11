@@ -209,7 +209,6 @@ if (isset($_POST['save_portfolio_btn'])) {
             $_SESSION['status_code'] = "error";
             header('Location: portfolios.php');
         }
-        
     } else {
         $_SESSION['status'] = "File format not supported";
         $_SESSION['status_code'] = "warning";
@@ -329,7 +328,6 @@ if (isset($_POST['save_careers_btn'])) {
             $_SESSION['status_code'] = "error";
             header('Location: careers.php');
         }
-        
     } else {
         $_SESSION['status'] = "File format not supported";
         $_SESSION['status_code'] = "warning";
@@ -390,7 +388,6 @@ if (isset($_POST['update_careers_btn'])) {
         $_SESSION['status_code'] = "error";
         header('Location: careers.php');
     }
-    
 }
 
 //DELETE DATA
@@ -422,6 +419,8 @@ if (isset($_POST['careers_delete_btn'])) {
 
 /* ----------------------------- END CAREERS ------------------------------*/
 
+/* SERVICE */
+
 if (isset($_POST['save_service_btn'])) {
 
     $name = mysqli_real_escape_string($connection, $_POST['service_name']);
@@ -437,34 +436,72 @@ if (isset($_POST['save_service_btn'])) {
 
     // if ($email_count == 0) {
 
-        $image_validate_ext = in_array($_FILES['service_image']['type'], $image_ext);
+    $image_validate_ext = in_array($_FILES['service_image']['type'], $image_ext);
 
-        if ($image_validate_ext) {
-            $info = pathinfo($_FILES['service_image']['name']);
-            $ext = $info['extension'];
-            $file_name = time() . '.' . $ext;
+    if ($image_validate_ext) {
+        $info = pathinfo($_FILES['service_image']['name']);
+        $ext = $info['extension'];
+        $file_name = time() . '.' . $ext;
 
-            $query = "INSERT INTO service (`service_name`,`service_image`,`short_desc`,`description`,`seo_keywords`) VALUES ('$name','$file_name','$short_desc','$desc','$seo_keys')";
-            $query_run = mysqli_query($connection, $query);
+        $query = "INSERT INTO service (`service_name`,`service_image`,`short_desc`,`description`,`seo_keywords`) VALUES ('$name','$file_name','$short_desc','$desc','$seo_keys')";
+        $query_run = mysqli_query($connection, $query);
 
-            if ($query_run) {
-                move_uploaded_file($_FILES['service_image']['tmp_name'], $image_upload_path . "services/" . $file_name);
-                $_SESSION['status'] = "Service Added Successfully";
-                $_SESSION['status_code'] = "success";
-                header('Location: service.php');
-            } else {
-                $_SESSION['status'] = "service Not Added";
-                $_SESSION['status_code'] = "error";
-                header('Location: service.php');
-            }
+        if ($query_run) {
+            move_uploaded_file($_FILES['service_image']['tmp_name'], $image_upload_path . "services/" . $file_name);
+            $_SESSION['status'] = "Service Added Successfully";
+            $_SESSION['status_code'] = "success";
+            header('Location: service.php');
         } else {
-            $_SESSION['status'] = "File format not supported";
-            $_SESSION['status_code'] = "warning";
+            $_SESSION['status'] = "service Not Added";
+            $_SESSION['status_code'] = "error";
             header('Location: service.php');
         }
+    } else {
+        $_SESSION['status'] = "File format not supported";
+        $_SESSION['status_code'] = "warning";
+        header('Location: service.php');
+    }
     // } else {
     //     $_SESSION['status'] = "e-mail already exists";
     //     $_SESSION['status_code'] = "warning";
     //     header('Location: about_us.php');
     // }
+}
+
+
+/* ----------------------------- END SERVICE ------------------------------*/
+
+/* ADDRESS */
+if (isset($_POST['update_address_btn'])) {
+
+    $address_about = mysqli_real_escape_string($connection, $_POST['about']);
+    $address_mob1 = mysqli_real_escape_string($connection, $_POST['mobile1']);
+    $address_mob2 = mysqli_real_escape_string($connection, $_POST['mobile2']);
+    $address_email = mysqli_real_escape_string($connection, $_POST['email']);
+    $address_add = mysqli_real_escape_string($connection, $_POST['address']);
+    $address_twitter = mysqli_real_escape_string($connection, $_POST['twitter']);
+    $address_facebook = mysqli_real_escape_string($connection, $_POST['facebook']);
+    $address_linkedin = mysqli_real_escape_string($connection, $_POST['linkedin']);
+    $address_pintrest = mysqli_real_escape_string($connection, $_POST['pintrest']);
+    $address_discord = mysqli_real_escape_string($connection, $_POST['discord']);
+    $address_google = mysqli_real_escape_string($connection, $_POST['google']);
+
+
+
+    $query = "UPDATE address SET about_desc ='$address_about', mobile1 ='$address_mob1', mobile2 ='$address_mob2', email ='$address_email'
+    , address ='$address_add', twitter ='$address_twitter', facebook ='$address_facebook', linkedin ='$address_linkedin', pintrest ='$address_pintrest'
+    , discord ='$address_discord', google ='$address_google' WHERE id = '1'";
+
+    $query_run = mysqli_query($connection, $query);
+
+
+    if ($query_run) {
+        $_SESSION['status'] = "Address Updated Successfully";
+        $_SESSION['status_code'] = "success";
+        header('Location: address.php');
+    } else {
+        $_SESSION['status'] = "Address Not Updated";
+        $_SESSION['status_code'] = "error";
+        header('Location: address.php');
+    }
 }

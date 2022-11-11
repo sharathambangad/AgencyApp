@@ -63,8 +63,14 @@
 
      <li class="nav-item">
        <a class="nav-link" href="careers.php">
-         <i class="fas fa-fw fa-briefcase"></i>
+         <i class="fas fa-fw fa-graduation-cap"></i>
          <span>Careers</span></a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="address.php">
+         <i class="fas fa-fw fa-info-circle"></i>
+         <span>About Us</span></a>
      </li>
 
      <!-- Divider -->

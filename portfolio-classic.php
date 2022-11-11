@@ -53,23 +53,6 @@
 </head>
 
 <body>
-  <!-- Style switcher start -->
-  <!-- <div class="style-switch-wrapper">
-      <div class="style-switch-button">
-        <i class="fa fa-sliders"></i>
-      </div>
-      <h3>Style Options</h3>
-      <button id="preset1" class="btn btn-sm btn-primary"></button>
-      <button id="preset2" class="btn btn-sm btn-primary"></button>
-      <button id="preset3" class="btn btn-sm btn-primary"></button>
-      <button id="preset4" class="btn btn-sm btn-primary"></button>
-      <button id="preset5" class="btn btn-sm btn-primary"></button>
-      <button id="preset6" class="btn btn-sm btn-primary"></button>
-      <br /><br />
-      <a class="btn btn-sm btn-primary close-styler pull-right">Close X</a>
-    </div> -->
-  <!-- Style switcher end -->
-
   <div class="body-inner">
     <!-- Header start -->
     <header id="header" class="navbar-fixed-top header2" role="banner">
@@ -92,13 +75,13 @@
           <!--/ Logo end -->
           <nav class="collapse navbar-collapse clearfix" role="navigation">
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown active">
+              <li class="dropdown">
                 <a href="index.php">Home</a>
               </li>
               <li class="dropdown">
                 <a href="service.php">Services</a>
               </li>
-              <li class="dropdown">
+              <li class="dropdown active">
                 <a href="portfolio-classic.php">Portfolio</a>
               </li>
               <li class="dropdown">
@@ -110,7 +93,7 @@
               <li class="dropdown">
                 <a href="about-us.php">About Us </a>
               </li>
-              <li><a href="contact.php">Contact</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
           </nav>
           <!--/ Navigation end -->
@@ -121,145 +104,27 @@
     </header>
     <!--/ Header end -->
 
-    <!-- Slider start -->
-    <section id="home" class="no-padding">
-      <div id="main-slide" class="ts-flex-slider">
-        <div class="flexSlideshow flexslider">
-          <ul class="slides">
-            <li>
-              <div class="overlay2">
-                <img class="" src="images/slider/bg1.jpg" alt="slider" />
-              </div>
-              <div class="flex-caption slider-content">
-                <div class="col-md-12 text-center">
-                  <h2 class="animated2">Need To Invent The Future!</h2>
-                  <h3 class="animated3">
-                    We Making Difference To Great Things Possible
-                  </h3>
-                  <p class="animated4">
-                    <a href="contact.php" class="slider btn btn-primary white">Call Now</a>
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="overlay2">
-                <img class="" src="images/slider/bg2.jpg" alt="slider" />
-              </div>
-              <div class="flex-caption slider-content">
-                <div class="col-md-12 text-center">
-                  <h2 class="animated4">How Big Can You Dream?</h2>
-                  <h3 class="animated5">We are here to make it happen</h3>
-                  <p class="animated6">
-                    <a href="contact.html" class="slider btn btn-primary white">Call Now</a>
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="overlay2">
-                <img class="" src="images/slider/bg3.jpg" alt="slider" />
-              </div>
-              <div class="flex-caption slider-content">
-                <div class="col-md-12 text-center">
-                  <h2 class="animated7">Your Challenge is Our Progress</h2>
-                  <h3 class="animated8">
-                    So, You Don't Need to Go Anywhere Today
-                  </h3>
-                  <div class="">
-                    <a class="animated4 slider btn btn-primary btn-min-block white" href="contact.html">Call Now</a>
-                    <!-- <a
-                        class="animated4 slider btn btn-primary btn-min-block solid"
-                        href="#"
-                        >Live Demo</a
-                      > -->
-                  </div>
-                </div>
-              </div>
-            </li>
+    <div id="banner-area">
+      <img src="images/banner/banner2.jpg" alt="" />
+      <div class="parallax-overlay"></div>
+      <!-- Subpage title start -->
+      <div class="banner-title-content">
+        <div class="text-center">
+          <h2>Portfolio Classic</h2>
+          <ul class="breadcrumb">
+            <li>Home</li>
+            <li>Portfolio</li>
+            <li><a href="#"> Portfolio Classic</a></li>
           </ul>
         </div>
       </div>
-      <!--/ Main slider end -->
-    </section>
-    <!--/ Slider end -->
-
-    <section id="image-block" class="image-block no-padding">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 ts-padding" style="
-                height: 650px;
-                background: url(images/image-block-bg.jpg) 50% 50% / cover
-                  no-repeat;
-              "></div>
-          <div class="col-md-6 ts-padding img-block-right">
-            <div class="img-block-head text-center">
-              <h2>Know More About Our Company</h2>
-              <h3>Why Choose Us</h3>
-              <p>
-                Aenean sollicitudin, lorem quis bibendum auctor, nisi elit
-                consequat ipsum, nec sagittis sem nibh id elit. Proin gravida
-                nibh vel velit auctor Aenean sollicitudin, adipisicing elit
-                sed lorem quis bibendum auctor.
-              </p>
-            </div>
-
-            <div class="gap-30"></div>
-
-            <div class="image-block-content">
-              <span class="feature-icon pull-left"><i class="fa fa-bicycle"></i></span>
-              <div class="feature-content">
-                <h3>Tons of Features</h3>
-                <p>
-                  Consectetur adipisicing elit sed do eiusmod tempor
-                  incididunt ut
-                </p>
-              </div>
-            </div>
-            <!--/ End 1st block -->
-
-            <div class="image-block-content">
-              <span class="feature-icon pull-left"><i class="fa fa-diamond"></i></span>
-              <div class="feature-content">
-                <h3>PowerPack Theme</h3>
-                <p>
-                  Proin gravida nibh vel velit auctor Aenean sollicitudin
-                  adipisicing
-                </p>
-              </div>
-            </div>
-            <!--/ End 1st block -->
-
-            <div class="image-block-content">
-              <span class="feature-icon pull-left"><i class="fa fa-street-view"></i></span>
-              <div class="feature-content">
-                <h3>Day Night Support</h3>
-                <p>
-                  Simply dummy text and typesettings industry has been the
-                  industry
-                </p>
-              </div>
-            </div>
-            <!--/ End 1st block -->
-          </div>
-        </div>
-      </div>
-    </section>
+      <!-- Subpage title end -->
+    </div>
+    <!-- Banner area end -->
 
     <!-- Portfolio start -->
-    <section id="portfolio" class="portfolio portfolio-box">
+    <section id="main-container" class="portfolio portfolio-box">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12 heading text-center">
-            <span class="icon-pentagon wow bounceIn"><i class="fa fa-suitcase"></i></span>
-            <h2 class="title2">
-              Project Completed
-              <span class="title-desc">A Quality Experience Team with 4 years experience</span>
-            </h2>
-          </div>
-        </div>
-        <!-- Title row end -->
-
         <!--Isotope filter start -->
         <div class="row text-center">
           <div class="isotope-nav" data-isotope-nav="isotope">
@@ -393,9 +258,10 @@
         <!-- Content row end -->
       </div>
       <!-- Container end -->
-      <div class="gap-40"></div>
     </section>
     <!-- Portfolio end -->
+
+    <div class="gap-40"></div>
 
     <?php
     include('footer.php');

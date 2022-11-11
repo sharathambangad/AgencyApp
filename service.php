@@ -51,6 +51,8 @@ $service_image_path = "admin/uploads/images/services/";
   <!-- Style Swicther -->
   <link id="style-switch" href="css/presets/preset1.css" media="screen" rel="stylesheet" type="text/css" />
 
+
+
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
   <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -73,7 +75,7 @@ $service_image_path = "admin/uploads/images/services/";
               <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand">
-              <a href="index.html">
+              <a href="index.php">
                 <img class="img-responsive" src="images/logo.png" alt="logo" />
               </a>
             </div>
@@ -82,16 +84,16 @@ $service_image_path = "admin/uploads/images/services/";
           <nav class="collapse navbar-collapse clearfix" role="navigation">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-                <a href="index.html">Home</a>
+                <a href="index.php">Home</a>
               </li>
               <li class="dropdown active">
                 <a href="service.php">Services</a>
               </li>
               <li class="dropdown">
-                <a href="portfolio-classic.html">Portfolio</a>
+                <a href="portfolio-classic.php">Portfolio</a>
               </li>
               <li class="dropdown">
-                <a href="career.html">Career</a>
+                <a href="career.php">Career</a>
               </li>
               <li class="dropdown">
                 <a href="blog-rightside.html">Blog </a>
@@ -151,18 +153,19 @@ $service_image_path = "admin/uploads/images/services/";
             ?>
                 <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay=".5s">
                   <div class="service-content text-center">
-                    <!-- <span class="service-icon icon-pentagon"><i class="fa fa-tachometer"></i></span> -->
+                    <span class="service-icon icon-pentagon"><i class="fa fa-print"></i><i class="fa fa-android"></i></span>
 
-                   
+
                     <!-- <span class="img-hexagon" style=" width:100px;height:100px;">
                       <?php // echo '<img src = "' . $service_image_path . $row['service_image'] . '">' 
                       ?>
                     </span> -->
-                    <div class="img-hexagon">
-                      <?php echo '<img src = "' . $service_image_path . $row['service_image'] . '" width:50px;height:50px;>' ?>
+                    <!-- <div class="img-hexagon">
+                      <?php //echo '<img src = "' . $service_image_path . $row['service_image'] . '" width:50px;height:50px;>' 
+                      ?>
                       <span class="img-top"></span>
                       <span class="img-bottom"></span>
-                    </div>
+                    </div> -->
 
 
 
@@ -176,9 +179,12 @@ $service_image_path = "admin/uploads/images/services/";
               }
             }
             ?>
-            <!--/ End first service -->
+          </div>
+        </div>
+        <!--/ End first service -->
 
-            <!-- <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay=".8s">
+
+        <!-- <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay=".8s">
               <div class="service-content text-center">
                 <span class="service-icon icon-pentagon"><i class="fa fa-android"></i></span>
                 <h3>Apps Development</h3>
@@ -188,9 +194,9 @@ $service_image_path = "admin/uploads/images/services/";
                 </p>
               </div>
             </div> -->
-            <!--/ End Second service -->
+        <!--/ End Second service -->
 
-            <!-- <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="1.1s">
+        <!-- <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="1.1s">
               <div class="service-content text-center">
                 <span class="service-icon icon-pentagon"><i class="fa fa-shopping-cart"></i></span>
                 <h3>eCommerce Websites</h3>
@@ -200,9 +206,9 @@ $service_image_path = "admin/uploads/images/services/";
                 </p>
               </div>
             </div> -->
-            <!--/ End Third service -->
+        <!--/ End Third service -->
 
-            <!-- <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="1.4s">
+        <!-- <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="1.4s">
               <div class="service-content text-center">
                 <span class="service-icon icon-pentagon"><i class="fa fa-lightbulb-o"></i></span>
                 <h3>Design for Startups</h3>
@@ -212,9 +218,9 @@ $service_image_path = "admin/uploads/images/services/";
                 </p>
               </div>
             </div> -->
-            <!--/ End 4th service -->
-          </div>
-        </div>
+        <!--/ End 4th service -->
+        <!-- </div>
+        </div> -->
         <!-- Content 1st row end -->
 
         <div class="gap-40"></div>
@@ -275,12 +281,10 @@ $service_image_path = "admin/uploads/images/services/";
         <!-- Services end -->
       </div>
       <!--/ 1st container end -->
-
-      <div class="gap-60"></div>
     </section>
     <!--/ Main container end -->
 
-    
+    <div class="gap-40"></div>
     <?php
     include('footer.php');
     ?>

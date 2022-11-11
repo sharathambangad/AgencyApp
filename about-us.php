@@ -73,7 +73,7 @@ $about_image_path = "admin/uploads/images/team/";
               <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand">
-              <a href="index.html">
+              <a href="index.php">
                 <img class="img-responsive" src="images/logo.png" alt="logo" />
               </a>
             </div>
@@ -88,10 +88,10 @@ $about_image_path = "admin/uploads/images/team/";
                 <a href="service.php">Services</a>
               </li>
               <li class="dropdown">
-                <a href="portfolio-classic.html">Portfolio</a>
+                <a href="portfolio-classic.php">Portfolio</a>
               </li>
               <li class="dropdown">
-                <a href="career.html">Career</a>
+                <a href="career.php">Career</a>
               </li>
               <li class="dropdown">
                 <a href="blog-rightside.html">Blog</a>
@@ -199,57 +199,6 @@ $about_image_path = "admin/uploads/images/team/";
         <!-- Company Profile -->
       </div>
       <!--/ 1st container end -->
-
-      <div class="gap-60"></div>
-
-      <!-- Counter Strat -->
-      <div class="ts_counter_bg parallax parallax2">
-        <div class="parallax-overlay"></div>
-        <div class="container">
-          <div class="row wow fadeInLeft text-center">
-            <div class="facts col-md-3 col-sm-6">
-              <span class="facts-icon"><i class="fa fa-user"></i></span>
-              <div class="facts-num">
-                <span class="counter">1200</span>
-              </div>
-              <h3>Clients</h3>
-            </div>
-
-            <div class="facts col-md-3 col-sm-6">
-              <span class="facts-icon"><i class="fa fa-institution"></i></span>
-              <div class="facts-num">
-                <span class="counter">1277</span>
-              </div>
-              <h3>Item Sold</h3>
-            </div>
-
-            <div class="facts col-md-3 col-sm-6">
-              <span class="facts-icon"><i class="fa fa-suitcase"></i></span>
-              <div class="facts-num">
-                <span class="counter">869</span>
-              </div>
-              <h3>Projects</h3>
-            </div>
-
-            <div class="facts col-md-3 col-sm-6">
-              <span class="facts-icon"><i class="fa fa-trophy"></i></span>
-              <div class="facts-num">
-                <span class="counter">76</span>
-              </div>
-              <h3>Awards</h3>
-            </div>
-
-            <div class="gap-40"></div>
-
-            <div>
-              <a href="#" class="btn btn-primary solid">See Our Portfolio</a>
-            </div>
-          </div>
-          <!--/ row end -->
-        </div>
-        <!--/ Container end -->
-      </div>
-      <!--/ Counter end -->
 
       <div class="gap-60"></div>
 
