@@ -1,3 +1,7 @@
+<?php
+include('admin/config/dbconfig.php');
+$service_image_path = "admin/uploads/images/services/";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -11,7 +11,7 @@ $service_image_path = "admin/uploads/images/services/";
   <!-- Basic Page Needs
 	================================================== -->
   <meta charset="utf-8" />
-  <title>ClickForDern</title>
+  <title>Services</title>
   <meta name="description" content="" />
   <meta name="author" content="" />
 
@@ -25,7 +25,7 @@ $service_image_path = "admin/uploads/images/services/";
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/favicon-144x144.png" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/favicon-72x72.png" />
   <link rel="apple-touch-icon-precomposed" href="img/favicon/favicon-54x54.png" />
-
+  <link rel="stylesheet" href="service.css">
   <!-- CSS
 	================================================== -->
 
@@ -51,8 +51,6 @@ $service_image_path = "admin/uploads/images/services/";
   <!-- Style Swicther -->
   <link id="style-switch" href="css/presets/preset1.css" media="screen" rel="stylesheet" type="text/css" />
 
-
-
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
   <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -75,7 +73,7 @@ $service_image_path = "admin/uploads/images/services/";
               <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand">
-              <a href="index.php">
+              <a href="index.html">
                 <img class="img-responsive" src="images/logo.png" alt="logo" />
               </a>
             </div>
@@ -93,7 +91,7 @@ $service_image_path = "admin/uploads/images/services/";
                 <a href="portfolio-classic.php">Portfolio</a>
               </li>
               <li class="dropdown">
-                <a href="career.php">Career</a>
+                <a href="career.html">Career</a>
               </li>
               <li class="dropdown">
                 <a href="blog-rightside.html">Blog </a>
@@ -119,7 +117,7 @@ $service_image_path = "admin/uploads/images/services/";
         <div class="text-center">
           <h2>Services</h2>
           <ul class="breadcrumb">
-            <li>Home</li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="service.php"> Services</a></li>
           </ul>
         </div>
@@ -143,148 +141,48 @@ $service_image_path = "admin/uploads/images/services/";
 
         <div class="row">
           <div class="col-md-12">
+            <div class="hexagon-area">
+              <?php
+              $query = "SELECT * FROM service";
+              $query_run = mysqli_query($connection, $query);
 
-            <?php
-            $query = "SELECT * FROM service";
-            $query_run = mysqli_query($connection, $query);
-
-            if (mysqli_num_rows($query_run) > 0) {
-              while ($row = mysqli_fetch_assoc($query_run)) {
-            ?>
-                <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay=".5s">
-                  <div class="service-content text-center">
-                    <span class="service-icon icon-pentagon"><i class="fa fa-print"></i><i class="fa fa-android"></i></span>
-
-
-                    <!-- <span class="img-hexagon" style=" width:100px;height:100px;">
-                      <?php // echo '<img src = "' . $service_image_path . $row['service_image'] . '">' 
-                      ?>
-                    </span> -->
-                    <!-- <div class="img-hexagon">
-                      <?php //echo '<img src = "' . $service_image_path . $row['service_image'] . '" width:50px;height:50px;>' 
-                      ?>
-                      <span class="img-top"></span>
-                      <span class="img-bottom"></span>
-                    </div> -->
-
-
-
-                    <h3><?php echo $row['service_name']; ?></h3>
-                    <p>
-                      <?php echo $row['short_desc']; ?>
-                    </p>
+              if (mysqli_num_rows($query_run) > 0) {
+                while ($row = mysqli_fetch_assoc($query_run)) {
+              ?>
+              <div class="service-container wow fadeInDown" data-wow-delay=".5s">
+                <div class="service-content text-center">
+                  <div class="hexagon">
+                    <?php
+                      echo "<a href='service-single.php?id=".$row['id']."'><svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='white' class='bi bi-alarm' viewBox='0 0 16 16'>
+                          <path d='M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z'/>
+                          <path d='M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z'/>
+                        </svg></a>"
+                    ?>
                   </div>
+                  <h3> <?php echo $row['service_name']; ?> </h3>
+
+                      <p class="service-short-desc">
+                        <?php echo $row['short_desc']; ?>
+                      </p>
                 </div>
-            <?php
+              </div>
+              <?php
+                }
               }
-            }
-            ?>
-          </div>
-        </div>
-        <!--/ End first service -->
-
-
-        <!-- <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay=".8s">
-              <div class="service-content text-center">
-                <span class="service-icon icon-pentagon"><i class="fa fa-android"></i></span>
-                <h3>Apps Development</h3>
-                <p>
-                  Food truck master cleanse mixtape minim Portland, cardigan
-                  stumptown chambray swag
-                </p>
-              </div>
-            </div> -->
-        <!--/ End Second service -->
-
-        <!-- <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="1.1s">
-              <div class="service-content text-center">
-                <span class="service-icon icon-pentagon"><i class="fa fa-shopping-cart"></i></span>
-                <h3>eCommerce Websites</h3>
-                <p>
-                  Neutra Thundercats craft beer, listicle meggings bicycle
-                  rights 90's XOXO beard cardiga
-                </p>
-              </div>
-            </div> -->
-        <!--/ End Third service -->
-
-        <!-- <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="1.4s">
-              <div class="service-content text-center">
-                <span class="service-icon icon-pentagon"><i class="fa fa-lightbulb-o"></i></span>
-                <h3>Design for Startups</h3>
-                <p>
-                  We design beautiful modern engaging websites that always
-                  latest responsive technologies.
-                </p>
-              </div>
-            </div> -->
-        <!--/ End 4th service -->
-        <!-- </div>
-        </div> -->
-        <!-- Content 1st row end -->
-
-        <div class="gap-40"></div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay=".5s">
-              <div class="service-content text-center">
-                <span class="service-icon icon-pentagon"><i class="fa fa-bar-chart"></i></span>
-                <h3>SEO Service</h3>
-                <p>
-                  High Life narwhal, banh mi PBR single-origin coffee Odd
-                  Future actually aliqua polaroid befor
-                </p>
-              </div>
+              ?>
             </div>
             <!--/ End first service -->
 
-            <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay=".8s">
-              <div class="service-content text-center">
-                <span class="service-icon icon-pentagon"><i class="fa fa-bicycle"></i></span>
-                <h3>Startup Idea</h3>
-                <p>
-                  Food truck master cleanse mixtape minim Portland, cardigan
-                  stumptown chambray swag
-                </p>
-              </div>
-            </div>
-            <!--/ End Second service -->
-
-            <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="1.1s">
-              <div class="service-content text-center">
-                <span class="service-icon icon-pentagon"><i class="fa fa-comments"></i></span>
-                <h3>Consultation</h3>
-                <p>
-                  Neutra Thundercats craft beer, listicle meggings bicycle
-                  rights 90's XOXO beard cardiga
-                </p>
-              </div>
-            </div>
-            <!--/ End Third service -->
-
-            <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="1.4s">
-              <div class="service-content text-center">
-                <span class="service-icon icon-pentagon"><i class="fa fa-dollar"></i></span>
-                <h3>Croud Funding</h3>
-                <p>
-                  We design beautiful modern engaging websites that always
-                  latest responsive technologies.
-                </p>
-              </div>
-            </div>
-            <!--/ End 4th service -->
-          </div>
-        </div>
-        <!-- Content 2nd row end -->
-
+            
         <!-- Services end -->
       </div>
       <!--/ 1st container end -->
+
+      <div class="gap-60"></div>
     </section>
     <!--/ Main container end -->
 
-    <div class="gap-40"></div>
+    
     <?php
     include('footer.php');
     ?>
