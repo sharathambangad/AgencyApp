@@ -25,10 +25,10 @@ $service_image_path = "admin/uploads/images/services/";
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/favicon-144x144.png" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/favicon-72x72.png" />
   <link rel="apple-touch-icon-precomposed" href="img/favicon/favicon-54x54.png" />
-  <link rel="stylesheet" href="service.css">
   <!-- CSS
 	================================================== -->
-
+  <link rel="stylesheet" href="css/service.css">
+  
   <!-- Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <!-- Template styles-->
@@ -149,23 +149,23 @@ $service_image_path = "admin/uploads/images/services/";
               if (mysqli_num_rows($query_run) > 0) {
                 while ($row = mysqli_fetch_assoc($query_run)) {
               ?>
-              <div class="service-container wow fadeInDown" data-wow-delay=".5s">
-                <div class="service-content text-center">
-                  <div class="hexagon">
-                    <?php
-                      echo "<a href='service-single.php?id=".$row['id']."'><svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='white' class='bi bi-alarm' viewBox='0 0 16 16'>
+                  <div class="service-container wow fadeInDown" data-wow-delay=".5s">
+                    <div class="service-content text-center">
+                      <div class="hexagon">
+                        <?php
+                        echo "<a href='service-single.php?id=" . $row['id'] . "'><svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='white' class='bi bi-alarm' viewBox='0 0 16 16'>
                           <path d='M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z'/>
                           <path d='M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z'/>
                         </svg></a>"
-                    ?>
-                  </div>
-                  <h3> <?php echo $row['service_name']; ?> </h3>
+                        ?>
+                      </div>
+                      <h3> <?php echo $row['service_name']; ?> </h3>
 
                       <p class="service-short-desc">
                         <?php echo $row['short_desc']; ?>
                       </p>
-                </div>
-              </div>
+                    </div>
+                  </div>
               <?php
                 }
               }
@@ -173,16 +173,16 @@ $service_image_path = "admin/uploads/images/services/";
             </div>
             <!--/ End first service -->
 
-            
-        <!-- Services end -->
-      </div>
-      <!--/ 1st container end -->
 
-      <div class="gap-60"></div>
+            <!-- Services end -->
+          </div>
+          <!--/ 1st container end -->
+
+          <div class="gap-60"></div>
     </section>
     <!--/ Main container end -->
 
-    
+
     <?php
     include('footer.php');
     ?>

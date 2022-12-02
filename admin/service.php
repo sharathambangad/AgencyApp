@@ -3,6 +3,7 @@ include('security.php');
 include('includes/header.php');
 include('includes/navbar.php');
 $image_upload_path = "uploads/images/";
+
 ?>
 
 <!-- Begin Page Content -->
@@ -10,7 +11,7 @@ $image_upload_path = "uploads/images/";
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">
-        SERVICES 
+        SERVICES
     </h1>
 
     <button type="button" class="btn btn-primary mb-3 " data-toggle="modal" data-target="#addteamprofile">
@@ -34,6 +35,7 @@ $image_upload_path = "uploads/images/";
                                     <th> ID </th>
                                     <th> Service</th>
                                     <th> Service Image</th>
+                                    <th> Icon</th>
                                     <th> Short Description </th>
                                     <th> Description</th>
                                     <th> SEO Keyword</th>
@@ -49,31 +51,16 @@ $image_upload_path = "uploads/images/";
                                         <tr id="row_id_<?php echo $row['id']; ?>">
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['service_name']; ?></td>
+                                            <td><?php echo '<img src = "' . $image_upload_path . 'services/' . $row['service_image'] . '" width = "200px;" height = "50px;" alt = "SERVICE IMAGE">' ?></td>
                                             <td><?php echo '<img src = "' . $image_upload_path . 'services/' . $row['service_image'] . '" width = "50px;" height = "50px;" alt = "SERVICE IMAGE">' ?></td>
                                             <td><?php echo $row['short_desc']; ?></td>
-                                            <td>
-                                                <?php
-                                                    $content = $row['description'];
-                                                    $string = strip_tags($content);
-                                                    if(strlen($string)>200){
-                                                        $stringCut = substr($string,0,200);
-                                                        $endpoint = strpos($stringCut,' ');
-                                                        $string = $endpoint?substr($stringCut,0, $endpoint):substr($stringCut,0);
-                                                        $string.= '...<a class="float-right" type="button" data-toggle="collapse" data-target="#detailDesc'.$row['id'].'" aria-expanded="false" aria-controls="detailDesc">Read More</a>';
-                                                    }
-                                                    echo $string;
-                                                ?>
-                                                <!-- <?php //echo $row['description']; ?>
-                                                <a class="float-right" type="button" data-toggle="collapse" data-target="#detailDesc<?php //echo $row['id']; ?>" aria-expanded="false" aria-controls="detailDesc">
-                                                    ...Read More
-                                                </a> -->
-                                                <div class="collapse" id="detailDesc<?php echo $row['id']; ?>">
-                                                    <?php echo $row['description'];?>
-                                                </div>
+                                            <td class="fulljustify">
+                                                
+                                                <?php echo $row['description']; ?>
                                             </td>
                                             <td><?php echo $row['seo_keywords']; ?></td>
                                             <td>
-                                                <form action="service_edit.php" method="post">
+                                                <form action=" service_edit.php" method="post">
                                                     <input type="hidden" name="service_edit_id" value="<?php echo $row['id']; ?>">
                                                     <button type="submit" name="service_edit_btn" class="btn btn-primary"> <i class="fa fa-edit"></i></button>
                                                 </form>
@@ -129,6 +116,11 @@ $image_upload_path = "uploads/images/";
                         <div class="form-group">
                             <label> SEO Keywords </label>
                             <input type="text" name="service_seo_keys" class="form-control" placeholder="Add comma separated like HTML, Python" Required>
+                        </div>
+
+                        <div class="form-group">
+                            <label> Icon SVG </label>
+                            <input type="text" name="service_icon" class="form-control" placeholder="SVG tag for icon" Required>
                         </div>
 
                         <div class="form-group">

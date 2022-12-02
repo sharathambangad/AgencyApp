@@ -9,7 +9,7 @@ $image_upload_path = "uploads/images/";
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Vaccancy Details</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Service Details</h6>
         </div>
     </div>
     <div class="row">
@@ -20,56 +20,60 @@ $image_upload_path = "uploads/images/";
                 <div class="card-body">
 
                     <?php
-                    // if (isset($_POST['careers_edit_btn'])) {
-                    //     $id = $_POST['careers_edit_id'];
-                    //     $query = "SELECT * FROM careers WHERE id = $id ";
-                    //     $query_run = mysqli_query($connection, $query);
+                    if (isset($_POST['service_edit_btn'])) {
+                        $id = $_POST['service_edit_id'];
+                        $query = "SELECT * FROM service WHERE id = $id ";
+                        $query_run = mysqli_query($connection, $query);
 
-                    //     foreach ($query_run as $row) {
+                        foreach ($query_run as $row) {
                     ?>
                             <form>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                        <label>Service</label>
+                                        <input type="text" class="form-control" name="edit_service_name" value="<?php echo $row['service_name'] ?>" Required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Password</label>
-                                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                        <label>Short Description</label>
+                                        <input type="text" class="form-control" name="edit_service_short_desc" value="<?php echo $row['short_desc'] ?>" Required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                    <label>Description</label>
+                                    <textarea name="edit_service_desc" class="form-control" value="<?php echo $row['service_image'] ?>" Required>
+                                <?php
+                                echo $row['description'];
+                                ?>
+                            </textarea>
+
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputAddress2">Address 2</label>
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                    <label>SEO Keywords</label>
+                                    <input type="text" class="form-control" name="edit_service_seo_keys" value="<?php echo $row['seo_keywords'] ?>" Required>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputCity">City</label>
-                                        <input type="text" class="form-control" id="inputCity">
+                                        <label> Upload Image (jpg, jpeg & png formats only) </label>
+                                        <input type="file" name="service_image" id="service_image" class="form-control" value="<?php echo $row['service_image'] ?>">
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputState">State</label>
-                                        <select id="inputState" class="form-control">
-                                            <option selected>Choose...</option>
-                                            <option>...</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="inputZip">Zip</label>
-                                        <input type="text" class="form-control" id="inputZip">
+                                    <div class="form-group col-md-6">
+                                        <label> ICON SVG </label>
+                                        <input type="text" name="edit_service_svg" class="form-control" value="<?php echo $row['seo_keywords'] ?>" Required>
                                     </div>
                                 </div>
-
-                                <button type="submit" class="btn btn-primary float-right">Sign in</button>
+                                <div class="modal-footer">
+                                    <a href="service.php">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </a>
+                                    <button type="submit" name="update_service_btn" class="btn btn-success">Update</button>
+                                </div>
+                                
+                                
                             </form>
 
                     <?php
-                    //     }
-                    // }
+                        }
+                    }
                     ?>
                 </div>
             </div>

@@ -54,7 +54,6 @@ $image_upload_path = "uploads/images/";
                                                 </form>
                                             </td>
                                             <td>
-                                                <input type="hidden" name="careers_delete_id" value="<?php echo $row['id']; ?>">
                                                 <button type="button" class="btn btn-danger careers_delete_btn" value="<?php echo $row['id']; ?>"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>

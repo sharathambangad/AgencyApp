@@ -427,6 +427,7 @@ if (isset($_POST['save_service_btn'])) {
     $short_desc = mysqli_real_escape_string($connection, $_POST['service_short_desc']);
     $desc = mysqli_real_escape_string($connection, $_POST['service_desc']);
     $seo_keys = mysqli_real_escape_string($connection, $_POST['service_seo_keys']);
+    $icon_svg = mysqli_real_escape_string($connection, $_POST['service_icon']);
     $image = $_FILES['service_image']['name'];
 
     //email id duplication  
@@ -443,7 +444,7 @@ if (isset($_POST['save_service_btn'])) {
         $ext = $info['extension'];
         $file_name = time() . '.' . $ext;
 
-        $query = "INSERT INTO service (`service_name`,`service_image`,`short_desc`,`description`,`seo_keywords`) VALUES ('$name','$file_name','$short_desc','$desc','$seo_keys')";
+        $query = "INSERT INTO service (`service_name`,`service_image`,`short_desc`,`description`,`seo_keywords`,`icon_svg`) VALUES ('$name','$file_name','$short_desc','$desc','$seo_keys','$icon_svg')";
         $query_run = mysqli_query($connection, $query);
 
         if ($query_run) {
@@ -468,6 +469,32 @@ if (isset($_POST['save_service_btn'])) {
     // }
 }
 
+//DELETE DATA
+if (isset($_POST['service_delete_btn'])) {
+    $id = mysqli_real_escape_string($connection, $_POST['service_delete_id']);
+    $delete_image_query = "SELECT * from service WHERE id = '$id'";
+    $delete_image_query_run = mysqli_query($connection, $delete_image_query);
+
+    if ($delete_image_query_run) {
+        foreach ($delete_image_query_run as $image_row) {
+            $delete_image = $image_row['service_image'];
+        }
+    }
+
+    $delete_image_path = $image_upload_path . "services/" . $delete_image;
+
+    $query = "DELETE from service WHERE id = '$id'";
+    $query_run = mysqli_query($connection, $query);
+
+    if ($query_run) {
+        if (file_exists($delete_image_path)) {
+            unlink($delete_image_path);
+        }
+        echo 200;
+    } else {
+        echo 500;
+    }
+}
 
 /* ----------------------------- END SERVICE ------------------------------*/
 

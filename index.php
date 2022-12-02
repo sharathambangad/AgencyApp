@@ -151,7 +151,7 @@
                   <h2 class="animated4">How Big Can You Dream?</h2>
                   <h3 class="animated5">We are here to make it happen</h3>
                   <p class="animated6">
-                    <a href="contact.html" class="slider btn btn-primary white">Call Now</a>
+                    <a href="contact.php" class="slider btn btn-primary white">Call Now</a>
                   </p>
                 </div>
               </div>
@@ -167,7 +167,7 @@
                     So, You Don't Need to Go Anywhere Today
                   </h3>
                   <div class="">
-                    <a class="animated4 slider btn btn-primary btn-min-block white" href="contact.html">Call Now</a>
+                    <a class="animated4 slider btn btn-primary btn-min-block white" href="contact.php">Call Now</a>
                     <!-- <a
                         class="animated4 slider btn btn-primary btn-min-block solid"
                         href="#"

@@ -99,7 +99,7 @@ $about_image_path = "admin/uploads/images/team/";
               <li class="dropdown active">
                 <a href="about-us.php">About Us</a>
               </li>
-              <li><a href="contact.html">Contact</a></li>
+              <li><a href="contact.php">Contact</a></li>
             </ul>
           </nav>
           <!--/ Navigation end -->
