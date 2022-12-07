@@ -40,16 +40,20 @@ $image_upload_path = "uploads/images/";
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="edit_service_desc" class="form-control" value="<?php echo $row['service_image'] ?>" Required>
-                                <?php
-                                echo $row['description'];
-                                ?>
-                            </textarea>
+                                    <textarea name="edit_service_desc" class="form-control" Required>
+                                    <?php
+                                    echo $row['description'];
+                                    ?>
+                                    </textarea>
 
                                 </div>
                                 <div class="form-group">
-                                    <label>SEO Keywords</label>
-                                    <input type="text" class="form-control" name="edit_service_seo_keys" value="<?php echo $row['seo_keywords'] ?>" Required>
+                                    <label> ICON SVG </label>
+                                    <textarea name="edit_service_svg" class="form-control" Required>
+                                    <?php
+                                    echo $row['icon_svg'];
+                                    ?>
+                                    </textarea>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -57,8 +61,8 @@ $image_upload_path = "uploads/images/";
                                         <input type="file" name="service_image" id="service_image" class="form-control" value="<?php echo $row['service_image'] ?>">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label> ICON SVG </label>
-                                        <input type="text" name="edit_service_svg" class="form-control" value="<?php echo $row['seo_keywords'] ?>" Required>
+                                        <label>SEO Keywords</label>
+                                        <input type="text" class="form-control" name="edit_service_seo_keys" value="<?php echo $row['seo_keywords'] ?>" Required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -67,8 +71,8 @@ $image_upload_path = "uploads/images/";
                                     </a>
                                     <button type="submit" name="update_service_btn" class="btn btn-success">Update</button>
                                 </div>
-                                
-                                
+
+
                             </form>
 
                     <?php

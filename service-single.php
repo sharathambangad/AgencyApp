@@ -78,7 +78,7 @@
               <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand">
-              <a href="index.html">
+              <a href="index.php">
                 <img class="img-responsive" src="images/logo.png" alt="logo" />
               </a>
             </div>
@@ -104,7 +104,7 @@
               <li class="dropdown">
                 <a href="about-us.php">About Us </a>
               </li>
-              <li><a href="contact.html">Contact</a></li>
+              <li><a href="contact.php">Contact</a></li>
             </ul>
           </nav>
           <!--/ Navigation end -->
@@ -124,7 +124,7 @@
 		        	<ul class="breadcrumb">
 			            <li><a href="index.php">Home</a></li>
 			            <li><a href="service.php">Services</a></li>
-			            <li><a href="#"> <?php echo $row['service_name']; ?></a></li>
+			            <li><?php echo $row['service_name']; ?></li>
 		          	</ul>
 	          	</div>
           	</div><!-- Subpage title end -->

@@ -94,7 +94,7 @@
               <li class="dropdown">
                 <a href="about-us.php">About Us </a>
               </li>
-              <li><a href="contact.html">Contact</a></li>
+              <li><a href="contact.php">Contact</a></li>
             </ul>
           </nav>
           <!--/ Navigation end -->
@@ -113,7 +113,7 @@
         <div class="text-center">
           <h2>Jobs Openings</h2>
           <ul class="breadcrumb">
-            <li>Home</li>
+            <li><a href="index.php">Home</a></li>
             <li>Career</li>
           </ul>
         </div>
@@ -387,7 +387,7 @@
     </section>
     <!--/ Main container end -->
     <div class="gap-40"></div>
-    
+
     <?php
     include('footer.php');
     ?>

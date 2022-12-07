@@ -29,7 +29,7 @@ $image_upload_path = "uploads/images/";
                         $query = "SELECT * FROM service";
                         $query_run = mysqli_query($connection, $query);
                         ?>
-                        <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-striped table-hover table-dark" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th> ID </th>
@@ -52,10 +52,10 @@ $image_upload_path = "uploads/images/";
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['service_name']; ?></td>
                                             <td><?php echo '<img src = "' . $image_upload_path . 'services/' . $row['service_image'] . '" width = "200px;" height = "50px;" alt = "SERVICE IMAGE">' ?></td>
-                                            <td><?php echo '<img src = "' . $image_upload_path . 'services/' . $row['service_image'] . '" width = "50px;" height = "50px;" alt = "SERVICE IMAGE">' ?></td>
+                                            <td><?php echo $row['icon_svg']; ?></td>
                                             <td><?php echo $row['short_desc']; ?></td>
                                             <td class="fulljustify">
-                                                
+
                                                 <?php echo $row['description']; ?>
                                             </td>
                                             <td><?php echo $row['seo_keywords']; ?></td>

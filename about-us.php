@@ -118,8 +118,8 @@ $about_image_path = "admin/uploads/images/team/";
         <div class="text-center">
           <h2>About Us</h2>
           <ul class="breadcrumb">
-            <li>Home</li>
-            <li><a href="about-us.php"> About Us</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li>About Us</li>
           </ul>
         </div>
       </div>

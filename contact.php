@@ -93,7 +93,7 @@
               <li class="dropdown">
                 <a href="about-us.php">About Us </a>
               </li>
-              <li class="active"><a href="contact.html">Contact</a></li>
+              <li class="active"><a href="contact.php">Contact</a></li>
             </ul>
           </nav>
           <!--/ Navigation end -->
@@ -112,8 +112,8 @@
         <div class="text-center">
           <h2>Contact Us</h2>
           <ul class="breadcrumb">
-            <li>Home</li>
-            <li><a href="#"> Contact</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li>Contact</li>
           </ul>
         </div>
       </div>

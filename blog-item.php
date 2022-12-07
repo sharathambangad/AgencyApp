@@ -74,7 +74,7 @@ $service_image_path = "admin/uploads/images/services/";
 							<span class="icon-bar"></span>
 						</button>
 						<div class="navbar-brand">
-							<a href="index.html">
+							<a href="index.php">
 								<img class="img-responsive" src="images/logo.png" alt="logo" />
 							</a>
 						</div>
@@ -100,7 +100,7 @@ $service_image_path = "admin/uploads/images/services/";
 							<li class="dropdown">
 								<a href="about2.html">About Us </a>
 							</li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="contact.php">Contact</a></li>
 						</ul>
 					</nav>
 					<!--/ Navigation end -->
