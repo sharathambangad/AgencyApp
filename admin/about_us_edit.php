@@ -58,9 +58,8 @@ $image_upload_path = "uploads/images/";
                                     <input type="file" name="team_member_image" id="team_member_image" class="form-control" value="<?php echo $row['image'] ?>">
                                 </div>
 
-                                <a href="about_us.php" class="btn btn-danger"> Cancel </a>
-
-                                <button type="submit" name="update_team_btn" class="btn btn-success">Update</button>
+                                <button type="submit" name="update_team_btn" class="btn btn-success float-right">Update</button>
+                                <a href="about_us.php" class="btn btn-secondary float-right mr-1"> Cancel </a>
 
                             </form>
 
@@ -74,7 +73,7 @@ $image_upload_path = "uploads/images/";
     </div>
 
 
-            <?php
-            include('includes/scripts.php');
-            include('includes/footer.php');
-            ?>
+    <?php
+    include('includes/scripts.php');
+    include('includes/footer.php');
+    ?>

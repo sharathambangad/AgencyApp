@@ -430,12 +430,6 @@ if (isset($_POST['save_service_btn'])) {
     $icon_svg = mysqli_real_escape_string($connection, $_POST['service_icon']);
     $image = $_FILES['service_image']['name'];
 
-    //email id duplication  
-    // $email_query = "SELECT email FROM about_us WHERE email = '$email'";
-    // $email_query_run = mysqli_query($connection, $email_query);
-    // $email_count = mysqli_num_rows($email_query_run);
-
-    // if ($email_count == 0) {
 
     $image_validate_ext = in_array($_FILES['service_image']['type'], $image_ext);
 
@@ -462,14 +456,71 @@ if (isset($_POST['save_service_btn'])) {
         $_SESSION['status_code'] = "warning";
         header('Location: service.php');
     }
-    // } else {
-    //     $_SESSION['status'] = "e-mail already exists";
-    //     $_SESSION['status_code'] = "warning";
-    //     header('Location: about_us.php');
-    // }
+   
 }
 
-//DELETE DATA
+if (isset($_POST['update_service_btn'])) {
+
+    $edit_id = mysqli_real_escape_string($connection, $_POST['edit_service_id']);
+    $edit_service_name = mysqli_real_escape_string($connection, $_POST['edit_service_name']);
+    $edit_service_short_desc = mysqli_real_escape_string($connection, $_POST['edit_service_short_desc']);
+    $edit_service_desc = mysqli_real_escape_string($connection, $_POST['edit_service_desc']);
+    $edit_service_svg = mysqli_real_escape_string($connection, $_POST['edit_service_svg']);
+    $edit_service_seo = mysqli_real_escape_string($connection, $_POST['edit_service_seo_keys']);
+    
+    $edit_service_image = $_FILES['service_image']['name'];
+
+    $image_query = "SELECT * from service WHERE id = '$edit_id'";
+    $image_query_run = mysqli_query($connection, $image_query);
+
+    foreach ($image_query_run as $image_row) {
+        $file_name = $image_row['service_image'];
+        if ($edit_service_image != NULL) {
+
+            $image_validate_ext = in_array($_FILES['service_image']['type'], $image_ext);
+
+            if (!$image_validate_ext) {
+                $_SESSION['status'] = "File format not supported";
+                $_SESSION['status_code'] = "warning";
+                header('Location: service.php');
+                exit(0);
+            }
+            //update with new image and delete old image
+            elseif ($image_path = $image_upload_path . "services/" . $image_row['service_image']) {
+                unlink($image_path);
+                $info = pathinfo($_FILES['service_image']['name']);
+                $ext = $info['extension'];
+                $file_name = time() . '.' . $ext;
+            }
+        }
+    }
+
+       
+    $query = "UPDATE service SET service_name ='$edit_service_name', service_image ='$file_name', short_desc ='$edit_service_short_desc',
+    description ='$edit_service_desc', seo_keywords ='$edit_service_seo', icon_svg ='$edit_service_svg' WHERE id = '$edit_id'";
+
+    $query_run = mysqli_query($connection, $query);
+
+
+    if ($query_run) {
+        if ($edit_service_image == NULL) {
+            $_SESSION['status'] = "Service Updated Successfully";
+            $_SESSION['status_code'] = "success";
+            header('Location: service.php');
+        } else {
+            move_uploaded_file($_FILES['service_image']['tmp_name'], $image_upload_path . "services/" . $file_name);
+            $_SESSION['status'] = "Service Updated Successfully";
+            $_SESSION['status_code'] = "success";
+            header('Location: service.php');
+        }
+    } else {
+        $_SESSION['status'] = "Service Not Updated";
+        $_SESSION['status_code'] = "error";
+        header('Location: service.php');
+    }
+}
+
+//DELETE SERVICE
 if (isset($_POST['service_delete_btn'])) {
     $id = mysqli_real_escape_string($connection, $_POST['service_delete_id']);
     $delete_image_query = "SELECT * from service WHERE id = '$id'";

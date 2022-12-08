@@ -27,7 +27,10 @@ $image_upload_path = "uploads/images/";
 
                         foreach ($query_run as $row) {
                     ?>
-                            <form>
+                            <form action="form-action.php" method="POST" enctype="multipart/form-data">
+
+                                <input type="hidden" name="edit_service_id" value="<?php echo $row['id'] ?>">
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Service</label>
@@ -67,7 +70,7 @@ $image_upload_path = "uploads/images/";
                                 </div>
                                 <div class="modal-footer">
                                     <a href="service.php">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary">Cancel</button>
                                     </a>
                                     <button type="submit" name="update_service_btn" class="btn btn-success">Update</button>
                                 </div>

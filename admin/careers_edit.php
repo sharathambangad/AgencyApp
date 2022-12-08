@@ -41,8 +41,9 @@ $image_upload_path = "uploads/images/";
                                     <input type="file" name="careers_poster_image" id="careers_poster_image" class="form-control" value="<?php echo $row['post_image'] ?>">
                                 </div>
 
-                                <a href="careers.php" class="btn btn-danger"> Cancel </a>
-                                <button type="submit" name="update_careers_btn" class="btn btn-success">Update</button>
+                                <button type="submit" name="update_careers_btn" class="btn btn-success float-right">Update</button>
+                                <a href="careers.php" class="btn btn-secondary float-right mr-1"> Cancel </a>
+
 
                             </form>
 

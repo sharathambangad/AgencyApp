@@ -41,8 +41,8 @@ $image_upload_path = "uploads/images/";
                                     <input type="file" name="portfolio_client_image" id="portfolio_client_image" class="form-control" value="<?php echo $row['client_image'] ?>">
                                 </div>
 
-                                <a href="portfolios.php" class="btn btn-danger"> Cancel </a>
-                                <button type="submit" name="update_portfolio_btn" class="btn btn-success">Update</button>
+                                <button type="submit" name="update_portfolio_btn" class="btn btn-success float-right">Update</button>
+                                <a href="portfolios.php" class="btn btn-secondary float-right mr-1"> Cancel </a>
 
                             </form>
 
@@ -56,7 +56,7 @@ $image_upload_path = "uploads/images/";
     </div>
 
 
-            <?php
-            include('includes/scripts.php');
-            include('includes/footer.php');
-            ?>
+    <?php
+    include('includes/scripts.php');
+    include('includes/footer.php');
+    ?>

@@ -80,7 +80,7 @@ include('includes/navbar.php');
 
 
                             <button type="submit" name="update_address_btn" class="btn btn-success float-right">Update</button>
-                            <a href="address.php" class="btn btn-danger float-right mr-1"> Cancel </a>
+                            <a href="index-admin.php" class="btn btn-secondary float-right mr-1"> Cancel </a>
                         </form>
 
                     <?php
