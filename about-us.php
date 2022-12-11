@@ -226,7 +226,7 @@ $about_image_path = "admin/uploads/images/team/";
             if (mysqli_num_rows($query_run) > 0) {
               while ($row = mysqli_fetch_assoc($query_run)) {
             ?>
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-4 col-sm-6 hexagonContainer" >
                   <div class="team wow slideInLeft">
                     <div class="img-hexagon">
                       <?php echo '<img src = "' . $about_image_path . $row['image'] . '">' ?>
