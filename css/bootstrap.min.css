@@ -246,7 +246,15 @@ img {
 	display:block;
 	height:auto;
 	max-width:100%
+	
 }
+
+.img-responsive-career {
+	display: block;
+	height: auto;
+	/* max-width: 100% */
+}
+
 .img-rounded {
 	border-radius:6px
 }

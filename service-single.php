@@ -1,7 +1,8 @@
 <?php
 	include('admin/config/dbconfig.php');
 	$id=$_GET['id'];
-	$query = "SELECT * FROM service WHERE id='$id'";
+	$unmasked_id = openssl_decrypt($id, "AES-128-ECB", "clifod!@#123");
+	$query = "SELECT * FROM service WHERE id='$unmasked_id'";
 	$query_run = mysqli_query($connection, $query);
 	if (mysqli_num_rows($query_run) > 0) {
 		$row=mysqli_fetch_assoc($query_run);
@@ -14,7 +15,7 @@
 	<!-- Basic Page Needs
 	================================================== -->
 	<meta charset="utf-8">
-    <title><?php echo $row['service_name'] ?></title>
+    <title><?php echo $row['service_name']."-ClickForDern" ?></title>
     <meta name="description" content="<?php echo $row['description'] ?>">	
     <meta name="keywords" content="<?php echo $row['seo_keywords'] ?>">	
 	<meta name="author" content="">
@@ -66,7 +67,7 @@
 <body>
 	<div class="body-inner">
 	<!-- Header start -->
-	<header id="header" class="navbar-fixed-top header" role="banner">
+	<header id="header" class="navbar-fixed-top header2" role="banner">
 		<div class="container">
 			<div class="row">
 				<!-- Logo start -->
@@ -79,7 +80,7 @@
             </button>
             <div class="navbar-brand">
               <a href="index.php">
-                <img class="img-responsive" src="images/logo.png" alt="logo" />
+                <img class="img-responsive" src="images/logo200.png" alt="logo" />
               </a>
             </div>
           </div>
@@ -96,7 +97,7 @@
                 <a href="portfolio-classic.php">Portfolio</a>
               </li>
               <li class="dropdown">
-                <a href="career.html">Career</a>
+                <a href="career.php">Career</a>
               </li>
               <li class="dropdown">
                 <a href="blog-rightside.html">Blog </a>
@@ -162,7 +163,7 @@
 							<br/>
 							<h3 class="widget-title">Clients</h3>
 							<p>BizCraft Incorporatin Ltd.</p>
-							<p><a href="#" class="project-btn btn btn-primary">Project Link</a></p>
+							
 						</div>
 					</div>
 				</div>

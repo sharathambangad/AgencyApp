@@ -19,6 +19,51 @@ if (isset($_POST['enq_delete_btn'])) {
     }
 }
 
+if (isset($_POST['contact_btn'])) {
+
+    $name = mysqli_real_escape_string($connection, $_POST['name']);
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $mobile = mysqli_real_escape_string($connection, $_POST['mobile']);
+    $service = mysqli_real_escape_string($connection, $_POST['services']);
+ 
+    $msg = mysqli_real_escape_string($connection, $_POST['message']);
+    if (!isset($msg)) {
+        $msg = "";
+    }
+
+
+    $query =
+        "INSERT INTO contact_form (`name`,`mobile`,`email`,`service`,`message`,`view_status`) VALUES ('$name','$mobile','$email','$service','$msg','0')";
+    $query_run = mysqli_query($connection, $query);
+
+    if ($query_run) {
+
+        echo "<script language='javascript'>";
+        //echo 'alert("Thanks you for reaching us..will connect you soon");';
+        echo 'window.location.replace("../index.php");';
+        echo "</script>";
+    } 
+}
+
+if (isset($_POST['enq_viewed_btn'])) {
+
+    $id = mysqli_real_escape_string($connection, $_POST['enq_id']);
+
+    $query = "UPDATE contact_form SET view_status ='1' WHERE id = '$id'";
+    $query_run = mysqli_query($connection, $query);
+    if ($query_run) {
+
+        $_SESSION['status'] = "Viewed & Moved to all messages";
+        $_SESSION['status_code'] = "success";
+        header('Location: enquiries.php');
+    }else{
+
+        $_SESSION['status'] = "Something went wrong";
+        $_SESSION['status_code'] = "error";
+        header('Location: enquiries.php');
+    }
+
+}
 // add insert query section once FE completes
 /*------------------------------------------------------- Enquiries END---------------------------------------------------------------------------*/
 
@@ -32,6 +77,8 @@ if (isset($_POST['save_team_btn'])) {
     $email = mysqli_real_escape_string($connection, $_POST['team_member_email']);
     $fb = mysqli_real_escape_string($connection, $_POST['team_member_facebook']);
     $ig = mysqli_real_escape_string($connection, $_POST['team_member_instagram']);
+    $linkedin = mysqli_real_escape_string($connection, $_POST['team_member_linkedin']);
+    $twitter = mysqli_real_escape_string($connection, $_POST['team_member_twitter']);
     $image = $_FILES['team_member_image']['name'];
 
     //email id duplication  
@@ -48,7 +95,7 @@ if (isset($_POST['save_team_btn'])) {
             $ext = $info['extension'];
             $file_name = time() . '.' . $ext;
 
-            $query = "INSERT INTO about_us (`name`,`designation`,`image`,`email`,`fb_url`,`ig_url`) VALUES ('$name','$desg','$file_name','$email','$fb','$ig')";
+            $query = "INSERT INTO about_us (`name`,`designation`,`image`,`email`,`fb_url`,`ig_url`,`linkedin`,`twitter`) VALUES ('$name','$desg','$file_name','$email','$fb','$ig','$linkedin','$twitter')";
             $query_run = mysqli_query($connection, $query);
 
             if ($query_run) {
@@ -82,6 +129,8 @@ if (isset($_POST['update_team_btn'])) {
     $edit_email = mysqli_real_escape_string($connection, $_POST['edit_team_member_email']);
     $edit_fb = mysqli_real_escape_string($connection, $_POST['edit_team_member_facebook']);
     $edit_ig = mysqli_real_escape_string($connection, $_POST['edit_team_member_instagram']);
+    $edit_linkedin = mysqli_real_escape_string($connection, $_POST['edit_team_member_linkedin']);
+    $edit_twitter = mysqli_real_escape_string($connection, $_POST['edit_team_member_twitter']);
     $edit_image = $_FILES['team_member_image']['name'];
 
 
@@ -123,7 +172,7 @@ if (isset($_POST['update_team_btn'])) {
         }
 
 
-        $query = "UPDATE about_us SET name='$edit_name', designation='$edit_desg', email='$edit_email', fb_url='$edit_fb', ig_url='$edit_ig', image='$file_name' WHERE id = '$edit_id'";
+        $query = "UPDATE about_us SET name='$edit_name', designation='$edit_desg', email='$edit_email', fb_url='$edit_fb', ig_url='$edit_ig', linkedin='$edit_linkedin', twitter='$edit_twitter', image='$file_name' WHERE id = '$edit_id'";
         $query_run = mysqli_query($connection, $query);
 
         if ($query_run) {
@@ -456,7 +505,6 @@ if (isset($_POST['save_service_btn'])) {
         $_SESSION['status_code'] = "warning";
         header('Location: service.php');
     }
-   
 }
 
 if (isset($_POST['update_service_btn'])) {
@@ -467,7 +515,7 @@ if (isset($_POST['update_service_btn'])) {
     $edit_service_desc = mysqli_real_escape_string($connection, $_POST['edit_service_desc']);
     $edit_service_svg = mysqli_real_escape_string($connection, $_POST['edit_service_svg']);
     $edit_service_seo = mysqli_real_escape_string($connection, $_POST['edit_service_seo_keys']);
-    
+
     $edit_service_image = $_FILES['service_image']['name'];
 
     $image_query = "SELECT * from service WHERE id = '$edit_id'";
@@ -495,7 +543,7 @@ if (isset($_POST['update_service_btn'])) {
         }
     }
 
-       
+
     $query = "UPDATE service SET service_name ='$edit_service_name', service_image ='$file_name', short_desc ='$edit_service_short_desc',
     description ='$edit_service_desc', seo_keywords ='$edit_service_seo', icon_svg ='$edit_service_svg' WHERE id = '$edit_id'";
 
@@ -579,6 +627,62 @@ if (isset($_POST['update_address_btn'])) {
         header('Location: address.php');
     } else {
         $_SESSION['status'] = "Address Not Updated";
+        $_SESSION['status_code'] = "error";
+        header('Location: address.php');
+    }
+}
+
+/* ----------------------------- END ADDRESS ------------------------------*/
+
+/* FLICKR IMAGES*/
+
+if (isset($_POST['update_flikr_img_btn'])) {
+
+    $flickr_img_id = mysqli_real_escape_string($connection, $_POST['flickr_img_id']);
+    $edit_image = $_FILES['flickr_image']['name'];
+
+
+    $image_query = "SELECT * from flickr_images WHERE id = '$flickr_img_id'";
+    $image_query_run = mysqli_query($connection, $image_query);
+
+    foreach ($image_query_run as $image_row) {
+        $file_name = $image_row['image'];
+        if ($edit_image != NULL) {
+            $image_validate_ext = in_array($_FILES['flickr_image']['type'], $image_ext);
+
+            if (!$image_validate_ext) {
+                $_SESSION['status'] = "File format not supported";
+                $_SESSION['status_code'] = "warning";
+                header('Location: address.php');
+                exit(0);
+            }
+            //update with new image and delete old image
+            elseif ($image_path = $image_upload_path . "flickr/" . $image_row['image']) {
+                unlink($image_path);
+                $info = pathinfo($_FILES['flickr_image']['name']);
+                $ext = $info['extension'];
+                $file_name = time() . '.' . $ext;
+            }
+        }
+    }
+
+
+    $query = "UPDATE flickr_images SET image='$file_name' WHERE id = '$flickr_img_id'";
+    $query_run = mysqli_query($connection, $query);
+
+    if ($query_run) {
+        if ($edit_image == NULL) {
+            $_SESSION['status'] = "Flickr Image Updated Successfully";
+            $_SESSION['status_code'] = "success";
+            header('Location: address_us.php');
+        } else {
+            move_uploaded_file($_FILES['flickr_image']['tmp_name'], $image_upload_path . "flickr/" . $file_name);
+            $_SESSION['status'] = "Flickr Imagee Updated Successfully";
+            $_SESSION['status_code'] = "success";
+            header('Location: address.php');
+        }
+    } else {
+        $_SESSION['status'] = "Flickr Image Not Updated";
         $_SESSION['status_code'] = "error";
         header('Location: address.php');
     }

@@ -74,7 +74,7 @@ $about_image_path = "admin/uploads/images/team/";
             </button>
             <div class="navbar-brand">
               <a href="index.php">
-                <img class="img-responsive" src="images/logo.png" alt="logo" />
+                <img class="img-responsive" src="images/logo200.png" alt="logo" />
               </a>
             </div>
           </div>
@@ -226,7 +226,7 @@ $about_image_path = "admin/uploads/images/team/";
             if (mysqli_num_rows($query_run) > 0) {
               while ($row = mysqli_fetch_assoc($query_run)) {
             ?>
-                <div class="col-md-4 col-sm-6 hexagonContainer" >
+                <div class="col-md-3 col-sm-6 hexagonContainer">
                   <div class="team wow slideInLeft">
                     <div class="img-hexagon">
                       <?php echo '<img src = "' . $about_image_path . $row['image'] . '">' ?>
@@ -237,11 +237,11 @@ $about_image_path = "admin/uploads/images/team/";
                       <h3><?php echo $row['name']; ?></h3>
                       <p><?php echo $row['designation']; ?></p>
                       <div class="team-social">
-                        <a class="fb" href="#"><i class="fa fa-facebook"></i></a>
-                        <a class="twt" href="#"><i class="fa fa-twitter"></i></a>
-                        <a class="gplus" href="#"><i class="fa fa-google-plus"></i></a>
-                        <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
-                        <a class="dribble" href="#"><i class="fa fa-dribbble"></i></a>
+                        <a class="linkdin" href="<?php echo $row['linkedin']; ?>"><i class="fa fa-linkedin"></i></a>
+                        <a class="gplus" href="mailto:<?php echo $row['email']; ?>"><i class="fa fa-google-plus"></i></a>
+                        <a class="fb" href="<?php echo $row['fb_url']; ?>"><i class="fa fa-facebook"></i></a>
+                        <a class="insta" href="<?php echo $row['ig_url']; ?>"><i class="fa fa-instagram"></i></a>
+                        <a class="twt" href="<?php echo $row['twitter']; ?>"><i class="fa fa-twitter"></i></a>
                       </div>
                     </div>
                   </div>

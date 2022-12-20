@@ -92,7 +92,7 @@ $image_upload_path = "uploads/images/";
                         </div>
 
                         <div class="form-group">
-                            <label> Upload Image (jpg, jpeg & png formats only) </label>
+                            <label> Upload Image (jpg, jpeg & png formats only , 550x500 px) </label>
                             <input type="file" name="portfolio_client_image" class="form-control" Required>
                         </div>
 

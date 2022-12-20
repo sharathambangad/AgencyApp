@@ -2,13 +2,87 @@
 include('security.php');
 include('includes/header.php');
 include('includes/navbar.php');
+$image_upload_path = "uploads/images/flickr/";
 ?>
 
 
 <div class="container-fluid">
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">About Us - ClickForDern</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Flickr Photos - ClickForDern </h6>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-12  mb-2">
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="table-responsive" id="flickr_table">
+                        <?php
+                        $query = "SELECT * FROM flickr_images";
+                        $query_run = mysqli_query($connection, $query);
+                        ?>
+                        <table class="table table-bordered table-striped table-hover text-center" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th> ID </th>
+                                    <th> Flickr Image </th>
+                                    <th>Update (Image 400 x 400 px)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if (mysqli_num_rows($query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($query_run)) {
+                                ?>
+                                        <tr id="row_id_<?php echo $row['id']; ?>">
+                                            <td>
+                                                <?php echo $row['id']; ?>
+                                            </td>
+                                            <td><?php echo '<img src = "' . $image_upload_path . $row['image'] . '" width = "100px;" height = "85px;" alt = "FLICKR IMAGE">' ?></td>
+
+                                            <td>
+
+                                                <form action="form-action.php" method="POST" enctype="multipart/form-data">
+                                                    <div class="form-group">
+                                                        <input type="file" name="flickr_image" class="form-control" Required>
+                                                        <input type="hidden" name="flickr_img_id" value="<?php echo $row['id']; ?>">
+
+                                                    </div>
+                                                    <button type="submit" name="update_flikr_img_btn" class="btn btn-success float-right">Update</button>
+                                                    <a href="address.php" class="btn btn-secondary float-right mr-1"> Cancel </a>
+
+                                                </form>
+
+                                            </td>
+
+                                        </tr>
+                                <?php
+                                    }
+                                } else {
+                                    echo '<h4 class="bg-info mb-2 mt-2 text-white"> No Record Found </h4>';
+                                }
+                                ?>
+                            </tbody>
+                            <tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Footer - ClickForDern</h6>
         </div>
     </div>
     <div class="row">

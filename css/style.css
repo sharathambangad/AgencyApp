@@ -1856,8 +1856,13 @@ figure.effect-oscar:hover img {
 	background: #007bb6;
 }
 
-.team-social a.dribble:hover{
-	background: #ea4c89;
+/* .team-social a.insta:hover{
+	background: #bc2a8d;
+} */
+
+.team-social a.insta:hover {
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+
 }
 
 
@@ -2398,7 +2403,22 @@ figure.effect-oscar:hover img {
 	backface-visibility: hidden;
 }
 
+.img-gallery a.thumb-holder-flikr img {
+	margin: 0 15px 15px 0;
+	display: inline-block;
+	width: 140px;
+	height: 138px;
+	-webkit-transition: opacity 0.35s;
+	transition: opacity 0.35s;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
 .img-gallery a.thumb-holder:hover img{
+	opacity: 0.7;
+}
+
+.img-gallery a.thumb-holder-flikr:hover img {
 	opacity: 0.7;
 }
 

@@ -9,6 +9,7 @@
     <script src="js/sb-admin-2.min.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <script src="js/custom.js"></script>
+   
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>

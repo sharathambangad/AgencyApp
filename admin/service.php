@@ -29,7 +29,7 @@ $image_upload_path = "uploads/images/";
                         $query = "SELECT * FROM service";
                         $query_run = mysqli_query($connection, $query);
                         ?>
-                        <table class="table table-bordered table-striped table-hover table-dark" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-striped table-hover table-active" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th> ID </th>
@@ -119,12 +119,13 @@ $image_upload_path = "uploads/images/";
                         </div>
 
                         <div class="form-group">
-                            <label> Icon SVG </label>
+                            <label> Icon SVG 
+                            (NB:- ensure height and width as 40 and fill='white' ) </label>
                             <input type="text" name="service_icon" class="form-control" placeholder="SVG tag for icon" Required>
                         </div>
 
                         <div class="form-group">
-                            <label> Upload Image (jpg, jpeg & png formats only) </label>
+                            <label> Upload Image (jpg, jpeg & png formats only, 750x450 px) </label>
                             <input type="file" name="service_image" class="form-control" Required>
                         </div>
 

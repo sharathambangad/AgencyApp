@@ -74,7 +74,7 @@ $service_image_path = "admin/uploads/images/services/";
             </button>
             <div class="navbar-brand">
               <a href="index.php">
-                <img class="img-responsive" src="images/logo.png" alt="logo" />
+                <img class="img-responsive" src="images/logo200.png" alt="logo" />
               </a>
             </div>
           </div>
@@ -153,7 +153,8 @@ $service_image_path = "admin/uploads/images/services/";
                     <div class="service-content text-center">
                       <div class="hexagon">
                         <?php
-                        echo "<a href='service-single.php?id=" . $row['id'] . "'>".$row['icon_svg']."</a>"
+                        $masked_id = openssl_encrypt($row['id'], "AES-128-ECB","clifod!@#123");
+                        echo "<a href='service-single.php?id=" . $masked_id . "'>".$row['icon_svg']."</a>"
                         ?>
                       </div>
                       <h3> <?php echo $row['service_name']; ?> </h3>

@@ -2,6 +2,8 @@
 include('security.php');
 include('includes/header.php');
 include('includes/navbar.php');
+
+
 ?>
 
 <!-- Begin Page Content -->
@@ -17,7 +19,7 @@ include('includes/navbar.php');
                 <div class="card-body">
                     <div class="table-responsive">
                         <?php
-                        $query = "SELECT * FROM contact_form";
+                        $query = "SELECT * FROM contact_form where view_status ='0' ORDER BY id DESC";
                         $query_run = mysqli_query($connection, $query);
                         ?>
                         <table class="table table-bordered table-striped table-hover text-center" id="dataTable" width="100%" cellspacing="0">
@@ -28,7 +30,10 @@ include('includes/navbar.php');
                                     <th> Email </th>
                                     <th> Mobile </th>
                                     <th> Service </th>
-                                    <th>DELETE</th>
+                                    <th> Message </th>
+                                    <th> Mark as Viewed </th>
+                                    <th> Move to Trash</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,18 +47,27 @@ include('includes/navbar.php');
                                             <td><?php echo $row['email']; ?></td>
                                             <td><?php echo $row['mobile']; ?></td>
                                             <td><?php echo $row['service']; ?></td>
+                                            <td><?php echo $row['message']; ?></td>
+
+                                            <td>
+                                                <form action="form-action.php" method="post">
+                                                    <input type="hidden" name="enq_id" value="<?php echo $row['id']; ?>">
+                                                    <button type="submit" class="btn btn-primary" name="enq_viewed_btn" value="<?php echo $row['id']; ?>"> <i class="fa fa-eye"></i></button>
+                                                </form>
+                                            </td>
                                             <td>
                                                 <form action="form-action.php" method="post">
                                                     <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
                                                     <button type="button" class="btn btn-danger enq_delete_btn" value="<?php echo $row['id']; ?>"> <i class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
+
                                         </tr>
-                                <?php
+                                    <?php
                                     }
-                                } else {
-                                    echo '<h4 class="bg-info text-white"> No Record Found </h4>';
-                                    //echo "No Record Found";
+                                } else { ?>
+                                    <tr><td colspan = "12" > No Messages Found </td></tr>
+                                <?php
                                 }
                                 ?>
                             </tbody>

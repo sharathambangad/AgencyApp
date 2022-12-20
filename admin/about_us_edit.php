@@ -52,6 +52,14 @@ $image_upload_path = "uploads/images/";
                                     <label> Instagram </label>
                                     <input type="text" name="edit_team_member_instagram" class="form-control" value="<?php echo $row['ig_url'] ?>">
                                 </div>
+                                <div class="form-group">
+                                    <label> LinkedIn </label>
+                                    <input type="text" name="edit_team_member_linkedin" class="form-control" value="<?php echo $row['linkedin'] ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label> Twitter </label>
+                                    <input type="text" name="edit_team_member_twitter" class="form-control" value="<?php echo $row['twitter'] ?>">
+                                </div>
 
                                 <div class="form-group">
                                     <label> Upload Image (jpg, jpeg & png formats only) </label>

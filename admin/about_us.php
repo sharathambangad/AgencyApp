@@ -34,9 +34,11 @@ $image_upload_path = "uploads/images/";
                                     <th> Name </th>
                                     <th> Designation </th>
                                     <th> Image </th>
-                                    <th> Email </th>
+                                    <!-- <th> Email </th>
                                     <th> Facebook </th>
                                     <th> Instagram </th>
+                                    <th> LinkedIn </th>
+                                    <th> twitter </th> -->
                                     <th>EDIT</th>
                                     <th>DELETE</th>
                                 </tr>
@@ -50,10 +52,12 @@ $image_upload_path = "uploads/images/";
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['name']; ?></td>
                                             <td><?php echo $row['designation']; ?></td>
-                                            <td><?php echo '<img src = "' . $image_upload_path . 'team/' . $row['image'] . '" width = "35px;" height = "50px;" alt = "IMAGE">' ?></td>
-                                            <td><?php echo $row['email']; ?></td>
+                                            <td><?php echo '<img src = "' . $image_upload_path . 'team/' . $row['image'] . '" width = "100px;" height = "85px;" alt = "IMAGE">' ?></td>
+                                            <!-- <td><?php echo $row['email']; ?></td>
                                             <td><?php echo $row['fb_url']; ?></td>
                                             <td><?php echo $row['ig_url']; ?></td>
+                                            <td><?php echo $row['linkedin']; ?></td>
+                                            <td><?php echo $row['twitter']; ?></td> -->
                                             <td>
                                                 <form action="about_us_edit.php" method="post">
                                                     <input type="hidden" name="team_edit_id" value="<?php echo $row['id']; ?>">
@@ -115,6 +119,14 @@ $image_upload_path = "uploads/images/";
                         <div class="form-group">
                             <label> Instagram </label>
                             <input type="text" name="team_member_instagram" class="form-control" placeholder="Enter Instagram profile" Required>
+                        </div>
+                        <div class="form-group">
+                            <label> LinkedIn </label>
+                            <input type="text" name="team_member_linkedin" class="form-control" placeholder="Enter LinkedIn Profile" Required>
+                        </div>
+                        <div class="form-group">
+                            <label> Twitter </label>
+                            <input type="text" name="team_member_twitter" class="form-control" placeholder="Enter twitter profile" Required>
                         </div>
 
                         <div class="form-group">

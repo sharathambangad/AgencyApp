@@ -60,7 +60,7 @@ $image_upload_path = "uploads/images/";
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label> Upload Image (jpg, jpeg & png formats only) </label>
+                                        <label> Upload Image (jpg, jpeg & png formats only, 750x450 px) </label>
                                         <input type="file" name="service_image" id="service_image" class="form-control" value="<?php echo $row['service_image'] ?>">
                                     </div>
                                     <div class="form-group col-md-6">

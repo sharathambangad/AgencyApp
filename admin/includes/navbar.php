@@ -1,3 +1,6 @@
+   <?php
+    include('config/dbconfig.php');
+    ?>
    <!-- Sidebar -->
    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -50,7 +53,7 @@
 
      <li class="nav-item">
        <a class="nav-link" href="service.php">
-         <i class="fas fa-fw fa-wrench"></i>
+         <i class="fas fa-fw fa-cogs"></i>
          <span>Services</span></a>
      </li>
 
@@ -139,10 +142,15 @@
              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <i class="fas fa-bell fa-fw"></i>
                <!-- Counter - Alerts -->
-               <span class="badge badge-danger badge-counter">3+</span>
+               <?php
+                $query2 = "SELECT * FROM contact_form where view_status = '0';";
+                $query_run2 = mysqli_query($connection, $query2);
+                $rowcount2 = mysqli_num_rows($query_run2);
+                ?>
+               <span class="badge badge-danger badge-counter"><?php echo  $rowcount2 ?></span>
              </a>
              <!-- Dropdown - Alerts -->
-             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+             <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                <h6 class="dropdown-header">
                  Alerts Center
                </h6>
@@ -180,7 +188,7 @@
                  </div>
                </a>
                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-             </div>
+             </div> -->
            </li>
 
            <!-- Nav Item - Messages -->
@@ -188,10 +196,10 @@
              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <i class="fas fa-envelope fa-fw"></i>
                <!-- Counter - Messages -->
-               <span class="badge badge-danger badge-counter">7</span>
+               <span class="badge badge-danger badge-counter">0</span>
              </a>
              <!-- Dropdown - Messages -->
-             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+             <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                <h6 class="dropdown-header">
                  Message Center
                </h6>
@@ -236,7 +244,7 @@
                  </div>
                </a>
                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-             </div>
+             </div> -->
            </li>
 
            <div class="topbar-divider d-none d-sm-block"></div>

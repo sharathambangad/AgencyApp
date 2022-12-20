@@ -55,8 +55,14 @@ include('includes/navbar.php');
                 $query = "SELECT * FROM contact_form;";
                 $query_run = mysqli_query($connection, $query);
                 $rowcount = mysqli_num_rows($query_run);
+
+                $query2 = "SELECT * FROM contact_form where view_status = '1';";
+                $query_run2 = mysqli_query($connection, $query2);
+                $rowcount2 = mysqli_num_rows($query_run2);
+
                 ?>
                 <h4><?php echo  $rowcount ?> </h4>
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Viewed : <?php echo  $rowcount2 ?></div>
 
               </div>
             </div>
