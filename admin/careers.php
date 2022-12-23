@@ -34,8 +34,9 @@ $image_upload_path = "uploads/images/";
                                     <th> ID </th>
                                     <th> Vaccancy </th>
                                     <th> Poster </th>
-                                    <th>EDIT</th>
-                                    <th>DELETE</th>
+                                    <th> Post Date </th>
+                                    <th> Update</th>
+                                    <th> Move to Trash</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,20 +48,25 @@ $image_upload_path = "uploads/images/";
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['post']; ?></td>
                                             <td><?php echo '<img src = "' . $image_upload_path . 'career/' . $row['post_image'] . '" width = "200px;" height = "60px;" alt = "VACCANCY POSTER">' ?></td>
+                                            <td><?php echo $row['post_date']; ?></td>
                                             <td>
                                                 <form action=" careers_edit.php" method="post">
                                                     <input type="hidden" name="careers_edit_id" value="<?php echo $row['id']; ?>">
                                                     <button type="submit" name="careers_edit_btn" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                                                 </form>
                                             </td>
+
                                             <td>
                                                 <button type="button" class="btn btn-danger careers_delete_btn" value="<?php echo $row['id']; ?>"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
-                                <?php
+                                    <?php
                                     }
-                                } else {
-                                    echo '<h4 class="bg-info mb-2 mt-2 text-white"> No Record Found </h4>';
+                                } else { ?>
+                                    <tr>
+                                        <td colspan="12"> No Vaccancies Found </td>
+                                    </tr>
+                                <?php
                                 }
                                 ?>
                             </tbody>
@@ -89,6 +95,11 @@ $image_upload_path = "uploads/images/";
                         <div class="form-group">
                             <label> Vaccancy Post </label>
                             <input type="text" name="careers_vaccancy_name" class="form-control" placeholder="Enter Post" Required>
+                        </div>
+
+                        <div class="form-group">
+                            <label> Date </label>
+                            <input type="date" name="careers_vaccancy_date" class="form-control" placeholder="Pick Date" Required>
                         </div>
 
                         <div class="form-group">

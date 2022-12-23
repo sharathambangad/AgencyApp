@@ -46,7 +46,7 @@ $image_upload_path = "uploads/images/";
                                         <tr id="row_id_<?php echo $row['id']; ?>">
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['client_name']; ?></td>
-                                            <td><?php echo '<img src = "' . $image_upload_path . 'portfolio/' . $row['client_image'] . '" width = "200px;" height = "50px;" alt = "PORTFOLIO IMAGE">' ?></td>
+                                            <td><?php echo '<img src = "' . $image_upload_path . 'portfolio/' . $row['client_image'] . '" width = "150px;" height = "70px;" alt = "PORTFOLIO IMAGE">' ?></td>
                                             <td>
                                                 <form action="portfolios_edit.php" method="post">
                                                     <input type="hidden" name="portfolio_edit_id" value="<?php echo $row['id']; ?>">
@@ -57,10 +57,13 @@ $image_upload_path = "uploads/images/";
                                                 <button type="button" class="btn btn-danger portfolio_delete_btn" value="<?php echo $row['id']; ?>"> <i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
-                                <?php
+                                    <?php
                                     }
-                                } else {
-                                    echo '<h4 class="bg-info mb-2 mt-2 text-white"> No Record Found </h4>';
+                                } else { ?>
+                                    <tr>
+                                        <td colspan="12"> No Portfolio Found </td>
+                                    </tr>
+                                <?php
                                 }
                                 ?>
                             </tbody>

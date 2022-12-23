@@ -9,14 +9,19 @@
     <script src="js/sb-admin-2.min.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <script src="js/custom.js"></script>
-   
+
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="js/data-table.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
+
+
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
 
     <?php
     if (isset($_SESSION['status']) && $_SESSION['status'] != '') {

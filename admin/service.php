@@ -29,7 +29,7 @@ $image_upload_path = "uploads/images/";
                         $query = "SELECT * FROM service";
                         $query_run = mysqli_query($connection, $query);
                         ?>
-                        <table class="table table-bordered table-striped table-hover table-active" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-striped table-hover table-active text-center" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th> ID </th>
@@ -39,8 +39,8 @@ $image_upload_path = "uploads/images/";
                                     <th> Short Description </th>
                                     <th> Description</th>
                                     <th> SEO Keyword</th>
-                                    <th> EDIT</th>
-                                    <th> DELETE</th>
+                                    <th> Update</th>
+                                    <th> Move to Trash</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,10 +69,13 @@ $image_upload_path = "uploads/images/";
                                                 <button type="button" class="btn btn-danger service_delete_btn" value="<?php echo $row['id']; ?>"> <i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
-                                <?php
+                                    <?php
                                     }
-                                } else {
-                                    echo '<h4 class="bg-info mb-2 mt-2 text-white"> No Record Found </h4>';
+                                } else { ?>
+                                    <tr>
+                                        <td colspan="12"> No Services Found </td>
+                                    </tr>
+                                <?php
                                 }
                                 ?>
                             </tbody>
@@ -119,8 +122,8 @@ $image_upload_path = "uploads/images/";
                         </div>
 
                         <div class="form-group">
-                            <label> Icon SVG 
-                            (NB:- ensure height and width as 40 and fill='white' ) </label>
+                            <label> Icon SVG
+                                (NB:- ensure height and width as 40 and fill='white' ) </label>
                             <input type="text" name="service_icon" class="form-control" placeholder="SVG tag for icon" Required>
                         </div>
 

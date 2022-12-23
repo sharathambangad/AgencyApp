@@ -39,8 +39,8 @@ $image_upload_path = "uploads/images/";
                                     <th> Instagram </th>
                                     <th> LinkedIn </th>
                                     <th> twitter </th> -->
-                                    <th>EDIT</th>
-                                    <th>DELETE</th>
+                                    <th>Update</th>
+                                    <th>Move to Trash</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,10 +68,13 @@ $image_upload_path = "uploads/images/";
                                                 <button type="button" class="btn btn-danger team_delete_btn" value="<?php echo $row['id']; ?>"> <i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
-                                <?php
+                                    <?php
                                     }
-                                } else {
-                                    echo '<h4 class="bg-info mb-2 mt-2 text-white"> No Record Found </h4>';
+                                } else { ?>
+                                    <tr>
+                                        <td colspan="12"> No Profiles Found </td>
+                                    </tr>
+                                <?php
                                 }
                                 ?>
                             </tbody>
@@ -130,7 +133,7 @@ $image_upload_path = "uploads/images/";
                         </div>
 
                         <div class="form-group">
-                            <label> Upload Image (jpg, jpeg & png formats only) </label>
+                            <label> Upload Image (jpg, jpeg & png formats only. 260x260) </label>
                             <input type="file" name="team_member_image" class="form-control" Required>
                         </div>
 

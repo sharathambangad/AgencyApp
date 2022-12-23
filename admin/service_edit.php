@@ -51,7 +51,7 @@ $image_upload_path = "uploads/images/";
 
                                 </div>
                                 <div class="form-group">
-                                    <label> ICON SVG </label>
+                                    <label> ICON SVG (NB:- ensure height and width as 40 and fill='white' )</label>
                                     <textarea name="edit_service_svg" class="form-control" Required>
                                     <?php
                                     echo $row['icon_svg'];

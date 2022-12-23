@@ -62,7 +62,7 @@ $image_upload_path = "uploads/images/";
                                 </div>
 
                                 <div class="form-group">
-                                    <label> Upload Image (jpg, jpeg & png formats only) </label>
+                                    <label> Upload Image (jpg, jpeg & png formats only. 260x260) </label>
                                     <input type="file" name="team_member_image" id="team_member_image" class="form-control" value="<?php echo $row['image'] ?>">
                                 </div>
 

@@ -2,9 +2,15 @@
 include('security.php');
 
 $image_upload_path = "uploads/images/";
-$image_ext = array('image/jpg', 'image/jpeg', 'image/png');
+$allowed_image_extension = array(
+    "png",
+    "jpg",
+    "jpeg"
+);
 
 /***** Enquiries (contact form) ******/
+//DELETE ENQ
+
 if (isset($_POST['enq_delete_btn'])) {
 
     $id = mysqli_real_escape_string($connection, $_POST['delete_id']);
@@ -19,6 +25,7 @@ if (isset($_POST['enq_delete_btn'])) {
     }
 }
 
+//SAVE ENQ from FE
 if (isset($_POST['contact_btn'])) {
 
     $name = mysqli_real_escape_string($connection, $_POST['name']);
@@ -45,6 +52,7 @@ if (isset($_POST['contact_btn'])) {
     } 
 }
 
+//VIEW ENQ
 if (isset($_POST['enq_viewed_btn'])) {
 
     $id = mysqli_real_escape_string($connection, $_POST['enq_id']);
@@ -88,9 +96,31 @@ if (isset($_POST['save_team_btn'])) {
 
     if ($email_count == 0) {
 
-        $image_validate_ext = in_array($_FILES['team_member_image']['type'], $image_ext);
+        $file_extension = pathinfo($_FILES["team_member_image"]["name"], PATHINFO_EXTENSION);
+        $fileinfo = @getimagesize($_FILES["team_member_image"]["tmp_name"]);
+        $width = $fileinfo[0];
+        $height = $fileinfo[1];
 
-        if ($image_validate_ext) {
+
+        if (! in_array($file_extension, $allowed_image_extension)) {
+
+            $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
+            $_SESSION['status_code'] = "warning";
+            header('Location: about_us.php');
+        }
+        elseif( $_FILES["team_member_image"]["size"] > 2097152  ){
+
+            $_SESSION['status'] = "Image size exceeds 2MB";
+            $_SESSION['status_code'] = "warning";
+            header('Location: about_us.php');
+
+        }elseif($width != "260" || $height != "260"){
+
+            $_SESSION['status'] = "Image dimension should be 260x260";
+            $_SESSION['status_code'] = "warning";
+            header('Location: about_us.php');
+
+        }else{
             $info = pathinfo($_FILES['team_member_image']['name']);
             $ext = $info['extension'];
             $file_name = time() . '.' . $ext;
@@ -108,11 +138,8 @@ if (isset($_POST['save_team_btn'])) {
                 $_SESSION['status_code'] = "error";
                 header('Location: about_us.php');
             }
-        } else {
-            $_SESSION['status'] = "File format not supported";
-            $_SESSION['status_code'] = "warning";
-            header('Location: about_us.php');
         }
+
     } else {
         $_SESSION['status'] = "e-mail already exists";
         $_SESSION['status_code'] = "warning";
@@ -120,7 +147,7 @@ if (isset($_POST['save_team_btn'])) {
     }
 }
 
-//EDIT or UPDATE 
+//EDIT or UPDATE TEAM
 if (isset($_POST['update_team_btn'])) {
 
     $edit_id = mysqli_real_escape_string($connection, $_POST['edit_team_id']);
@@ -138,6 +165,11 @@ if (isset($_POST['update_team_btn'])) {
     $email_query_run = mysqli_query($connection, $email_query);
     $email_count = mysqli_num_rows($email_query_run);
 
+    $file_extension = pathinfo($_FILES["team_member_image"]["name"], PATHINFO_EXTENSION);
+    $fileinfo = @getimagesize($_FILES["team_member_image"]["tmp_name"]);
+    $width = $fileinfo[0];
+    $height = $fileinfo[1];
+
     foreach ($email_query_run as $email) {
         $db_user_id = $email['id'];
     }
@@ -153,10 +185,22 @@ if (isset($_POST['update_team_btn'])) {
         foreach ($image_query_run as $image_row) {
             $file_name = $image_row['image'];
             if ($edit_image != NULL) {
-                $image_validate_ext = in_array($_FILES['team_member_image']['type'], $image_ext);
 
-                if (!$image_validate_ext) {
-                    $_SESSION['status'] = "File format not supported";
+                if (!in_array($file_extension, $allowed_image_extension)) {
+
+                    $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
+                    $_SESSION['status_code'] = "warning";
+                    header('Location: about_us.php');
+                    exit(0);
+                } elseif ($_FILES["team_member_image"]["size"] > 2097152) {
+
+                    $_SESSION['status'] = "Image size exceeds 2MB";
+                    $_SESSION['status_code'] = "warning";
+                    header('Location: about_us.php');
+                    exit(0);
+                } elseif ($width != "260" || $height != "260") {
+
+                    $_SESSION['status'] = "Image dimension should be 260x260";
                     $_SESSION['status_code'] = "warning";
                     header('Location: about_us.php');
                     exit(0);
@@ -237,9 +281,31 @@ if (isset($_POST['save_portfolio_btn'])) {
     $client_name = mysqli_real_escape_string($connection, $_POST['portfolio_client_name']);
     $client_image = $_FILES['portfolio_client_image']['name'];
 
-    $image_validate_ext = in_array($_FILES['portfolio_client_image']['type'], $image_ext);
+    $file_extension = pathinfo($_FILES["portfolio_client_image"]["name"], PATHINFO_EXTENSION);
+    $fileinfo = @getimagesize($_FILES["portfolio_client_image"]["tmp_name"]);
+    $width = $fileinfo[0];
+    $height = $fileinfo[1];
 
-    if ($image_validate_ext) {
+
+    if (!in_array($file_extension, $allowed_image_extension)) {
+
+        $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
+        $_SESSION['status_code'] = "warning";
+        header('Location: portfolios.php');
+
+    } elseif ($_FILES["portfolio_client_image"]["size"] > 2097152) {
+
+        $_SESSION['status'] = "Image size exceeds 2MB";
+        $_SESSION['status_code'] = "warning";
+        header('Location: portfolios.php');
+
+    } elseif ($width != "550" || $height != "500") {
+
+        $_SESSION['status'] = "Image dimension should be 550x500";
+        $_SESSION['status_code'] = "warning";
+        header('Location: portfolios.php');
+
+    } else {
 
         $info = pathinfo($_FILES['portfolio_client_image']['name']);
         $ext = $info['extension'];
@@ -258,14 +324,10 @@ if (isset($_POST['save_portfolio_btn'])) {
             $_SESSION['status_code'] = "error";
             header('Location: portfolios.php');
         }
-    } else {
-        $_SESSION['status'] = "File format not supported";
-        $_SESSION['status_code'] = "warning";
-        header('Location: portfolios.php');
-    }
+    } 
 }
 
-//EDIT or UPDATE 
+//EDIT or UPDATE PORTFOLIO
 if (isset($_POST['update_portfolio_btn'])) {
 
     $edit_id = mysqli_real_escape_string($connection, $_POST['edit_portfolio_id']);
@@ -278,14 +340,34 @@ if (isset($_POST['update_portfolio_btn'])) {
     foreach ($image_query_run as $image_row) {
         $file_name = $image_row['client_image'];
         if ($edit_client_image != NULL) {
-            $image_validate_ext = in_array($_FILES['portfolio_client_image']['type'], $image_ext);
 
-            if (!$image_validate_ext) {
-                $_SESSION['status'] = "File format not supported";
+            $file_extension = pathinfo($_FILES["portfolio_client_image"]["name"], PATHINFO_EXTENSION);
+            $fileinfo = @getimagesize($_FILES["portfolio_client_image"]["tmp_name"]);
+            $width = $fileinfo[0];
+            $height = $fileinfo[1];
+
+
+            if (!in_array($file_extension, $allowed_image_extension)) {
+
+                $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
                 $_SESSION['status_code'] = "warning";
                 header('Location: portfolios.php');
                 exit(0);
-            }
+
+            } elseif ($_FILES["portfolio_client_image"]["size"] > 2097152) {
+
+                $_SESSION['status'] = "Image size exceeds 2MB";
+                $_SESSION['status_code'] = "warning";
+                header('Location: portfolios.php');
+                exit(0);
+
+            } elseif ($width != "550" || $height != "500") {
+
+                $_SESSION['status'] = "Image dimension should be 550x500";
+                $_SESSION['status_code'] = "warning";
+                header('Location: portfolios.php');
+                exit(0);
+            } 
             //update with new image and delete old image
             elseif ($image_path = $image_upload_path . "portfolio/" . $image_row['client_image']) {
                 unlink($image_path);
@@ -354,17 +436,40 @@ if (isset($_POST['portfolio_delete_btn'])) {
 //INSERT DATA
 if (isset($_POST['save_careers_btn'])) {
     $vacancy = mysqli_real_escape_string($connection, $_POST['careers_vaccancy_name']);
+    $post_date = mysqli_real_escape_string($connection, $_POST['careers_vaccancy_date']);
     $poster_image = $_FILES['careers_poster_image']['name'];
 
-    $image_validate_ext = in_array($_FILES['careers_poster_image']['type'], $image_ext);
+    $file_extension = pathinfo($_FILES["careers_poster_image"]["name"], PATHINFO_EXTENSION);
+    $fileinfo = @getimagesize($_FILES["careers_poster_image"]["tmp_name"]);
+    $width = $fileinfo[0];
+    $height = $fileinfo[1];
 
-    if ($image_validate_ext) {
+
+    if (!in_array($file_extension, $allowed_image_extension)) {
+
+        $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
+        $_SESSION['status_code'] = "warning";
+        header('Location: careers.php');
+
+    } elseif ($_FILES["careers_poster_image"]["size"] > 2097152) {
+
+        $_SESSION['status'] = "Image size exceeds 2MB";
+        $_SESSION['status_code'] = "warning";
+        header('Location: careers.php');
+
+    } elseif ($width != "750" || $height != "450") {
+
+        $_SESSION['status'] = "Image dimension should be 750x450";
+        $_SESSION['status_code'] = "warning";
+        header('Location: careers.php');
+
+    } else {
 
         $info = pathinfo($_FILES['careers_poster_image']['name']);
         $ext = $info['extension'];
         $file_name = time() . '.' . $ext;
 
-        $query = "INSERT INTO careers (`post`,`post_image`) VALUES ('$vacancy','$file_name')";
+        $query = "INSERT INTO careers (`post`,`post_image`,`post_date`) VALUES ('$vacancy','$file_name','$post_date')";
         $query_run = mysqli_query($connection, $query);
 
         if ($query_run) {
@@ -377,18 +482,15 @@ if (isset($_POST['save_careers_btn'])) {
             $_SESSION['status_code'] = "error";
             header('Location: careers.php');
         }
-    } else {
-        $_SESSION['status'] = "File format not supported";
-        $_SESSION['status_code'] = "warning";
-        header('Location: careers.php');
     }
 }
 
-//EDIT or UPDATE 
+//EDIT or UPDATE CAREERS
 if (isset($_POST['update_careers_btn'])) {
 
     $edit_id = mysqli_real_escape_string($connection, $_POST['edit_careers_id']);
     $edit_vacancy = mysqli_real_escape_string($connection, $_POST['edit_careers_vaccancy_name']);
+    $edit_post_date = mysqli_real_escape_string($connection, $_POST['edit_careers_vaccancy_date']);
     $edit_poster_image = $_FILES['careers_poster_image']['name'];
 
     $image_query = "SELECT * from careers WHERE id = '$edit_id'";
@@ -398,14 +500,33 @@ if (isset($_POST['update_careers_btn'])) {
         $file_name = $image_row['post_image'];
         if ($edit_poster_image != NULL) {
 
-            $image_validate_ext = in_array($_FILES['careers_poster_image']['type'], $image_ext);
+            $file_extension = pathinfo($_FILES["careers_poster_image"]["name"], PATHINFO_EXTENSION);
+            $fileinfo = @getimagesize($_FILES["careers_poster_image"]["tmp_name"]);
+            $width = $fileinfo[0];
+            $height = $fileinfo[1];
 
-            if (!$image_validate_ext) {
-                $_SESSION['status'] = "File format not supported";
+
+            if (!in_array($file_extension, $allowed_image_extension)) {
+
+                $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
                 $_SESSION['status_code'] = "warning";
                 header('Location: careers.php');
                 exit(0);
-            }
+
+            } elseif ($_FILES["careers_poster_image"]["size"] > 2097152) {
+
+                $_SESSION['status'] = "Image size exceeds 2MB";
+                $_SESSION['status_code'] = "warning";
+                header('Location: careers.php');
+                exit(0);
+
+            } elseif ($width != "750" || $height != "450") {
+
+                $_SESSION['status'] = "Image dimension should be 750x450";
+                $_SESSION['status_code'] = "warning";
+                header('Location: careers.php');
+                exit(0);
+            } 
             //update with new image and delete old image
             elseif ($image_path = $image_upload_path . "career/" . $image_row['post_image']) {
                 unlink($image_path);
@@ -417,7 +538,7 @@ if (isset($_POST['update_careers_btn'])) {
     }
 
 
-    $query = "UPDATE careers SET post ='$edit_vacancy', post_image ='$file_name' WHERE id = '$edit_id'";
+    $query = "UPDATE careers SET post ='$edit_vacancy', post_image ='$file_name',post_date ='$edit_post_date' WHERE id = '$edit_id'";
     $query_run = mysqli_query($connection, $query);
 
 
@@ -479,10 +600,29 @@ if (isset($_POST['save_service_btn'])) {
     $icon_svg = mysqli_real_escape_string($connection, $_POST['service_icon']);
     $image = $_FILES['service_image']['name'];
 
+    $file_extension = pathinfo($_FILES["service_image"]["name"], PATHINFO_EXTENSION);
+    $fileinfo = @getimagesize($_FILES["service_image"]["tmp_name"]);
+    $width = $fileinfo[0];
+    $height = $fileinfo[1];
 
-    $image_validate_ext = in_array($_FILES['service_image']['type'], $image_ext);
 
-    if ($image_validate_ext) {
+    if (!in_array($file_extension, $allowed_image_extension)) {
+
+        $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
+        $_SESSION['status_code'] = "warning";
+        header('Location: service.php');
+    } elseif ($_FILES["careers_poster_image"]["size"] > 2097152) {
+
+        $_SESSION['status'] = "Image size exceeds 2MB";
+        $_SESSION['status_code'] = "warning";
+        header('Location: service.php');
+    } elseif ($width != "750" || $height != "450") {
+
+        $_SESSION['status'] = "Image dimension should be 750x450";
+        $_SESSION['status_code'] = "warning";
+        header('Location: service.php');
+
+    }else {
         $info = pathinfo($_FILES['service_image']['name']);
         $ext = $info['extension'];
         $file_name = time() . '.' . $ext;
@@ -500,13 +640,10 @@ if (isset($_POST['save_service_btn'])) {
             $_SESSION['status_code'] = "error";
             header('Location: service.php');
         }
-    } else {
-        $_SESSION['status'] = "File format not supported";
-        $_SESSION['status_code'] = "warning";
-        header('Location: service.php');
-    }
+    } 
 }
 
+//EDIT or UPDATE SERVICE
 if (isset($_POST['update_service_btn'])) {
 
     $edit_id = mysqli_real_escape_string($connection, $_POST['edit_service_id']);
@@ -525,14 +662,31 @@ if (isset($_POST['update_service_btn'])) {
         $file_name = $image_row['service_image'];
         if ($edit_service_image != NULL) {
 
-            $image_validate_ext = in_array($_FILES['service_image']['type'], $image_ext);
+            $file_extension = pathinfo($_FILES["service_image"]["name"], PATHINFO_EXTENSION);
+            $fileinfo = @getimagesize($_FILES["service_image"]["tmp_name"]);
+            $width = $fileinfo[0];
+            $height = $fileinfo[1];
 
-            if (!$image_validate_ext) {
-                $_SESSION['status'] = "File format not supported";
+
+            if (!in_array($file_extension, $allowed_image_extension)) {
+
+                $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
                 $_SESSION['status_code'] = "warning";
                 header('Location: service.php');
                 exit(0);
-            }
+            } elseif ($_FILES["careers_poster_image"]["size"] > 2097152) {
+
+                $_SESSION['status'] = "Image size exceeds 2MB";
+                $_SESSION['status_code'] = "warning";
+                header('Location: service.php');
+                exit(0);
+            } elseif ($width != "750" || $height != "450") {
+
+                $_SESSION['status'] = "Image dimension should be 750x450";
+                $_SESSION['status_code'] = "warning";
+                header('Location: service.php');
+                exit(0);
+            }    
             //update with new image and delete old image
             elseif ($image_path = $image_upload_path . "services/" . $image_row['service_image']) {
                 unlink($image_path);
@@ -648,14 +802,32 @@ if (isset($_POST['update_flikr_img_btn'])) {
     foreach ($image_query_run as $image_row) {
         $file_name = $image_row['image'];
         if ($edit_image != NULL) {
-            $image_validate_ext = in_array($_FILES['flickr_image']['type'], $image_ext);
 
-            if (!$image_validate_ext) {
-                $_SESSION['status'] = "File format not supported";
+            $file_extension = pathinfo($_FILES["flickr_image"]["name"], PATHINFO_EXTENSION);
+            $fileinfo = @getimagesize($_FILES["flickr_image"]["tmp_name"]);
+            $width = $fileinfo[0];
+            $height = $fileinfo[1];
+
+
+            if (!in_array($file_extension, $allowed_image_extension)) {
+
+                $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
                 $_SESSION['status_code'] = "warning";
                 header('Location: address.php');
                 exit(0);
-            }
+            } elseif ($_FILES["flickr_image"]["size"] > 2097152) {
+
+                $_SESSION['status'] = "Image size exceeds 2MB";
+                $_SESSION['status_code'] = "warning";
+                header('Location: address.php');
+                exit(0);
+            } elseif ($width != "400" || $height != "400") {
+
+                $_SESSION['status'] = "Image dimension should be 400x400";
+                $_SESSION['status_code'] = "warning";
+                header('Location: address.php');
+                exit(0);
+            }    
             //update with new image and delete old image
             elseif ($image_path = $image_upload_path . "flickr/" . $image_row['image']) {
                 unlink($image_path);

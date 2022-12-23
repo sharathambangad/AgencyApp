@@ -8,7 +8,7 @@ include('includes/navbar.php');
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Buttons</h1>
+    <h1 class="h3 mb-4 text-gray-800">Job Applications</h1>
 
     <div class="row">
 
@@ -24,13 +24,16 @@ include('includes/navbar.php');
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th> ID </th>
+                                
+                                    <td colspan="12"> No Applications Found </td>
+                                </tr>
+                                <!-- <th> ID </th>
                                     <th> Name </th>
                                     <th> Email </th>
                                     <th> Mobile </th>
                                     <th> Service </th>
-                                    <th>DELETE</th>
-                                </tr>
+                                    <th>DELETE</th> -->
+                                
                             </thead>
                             <tbody>
                                 <?php
@@ -39,13 +42,13 @@ include('includes/navbar.php');
                                 //while($row = mysqli_fetch_assoc($query_run))
                                 //{
                                 ?>
-                                <tr>
+                                <!-- <tr> -->
                                     <td><?php /* echo $row['id']; ?></td>
                 <td><?php  echo $row['username']; ?></td>
                 <td><?php  echo $row['email']; ?></td>
                 <td><?php  echo $row['password']; ?></td>
                 <td><?php  echo $row['usertype']; */ ?></td>
-                                    <td>
+                                    <!-- <td>
                                         <form action="register_edit.php" method="post">
                                             <input type="hidden" name="edit_id" value="<?php //echo $row['id']; 
                                                                                         ?>">
@@ -58,14 +61,14 @@ include('includes/navbar.php');
                                                                                             ?>">
                                             <button type="submit" name="delete_btn" class="btn btn-danger"> DELETE</button>
                                         </form>
-                                    </td>
-                                </tr>
+                                    </td> -->
+                                <!-- </tr> -->
                                 <?php
                                 //} 
                                 // }
                                 // else {
-                                // echo "No Record Found";
-                                // }
+                                // <td colspan="12"> No Applications Found </td>
+                                // <?php}
                                 ?>
                             </tbody>
                         </table>
