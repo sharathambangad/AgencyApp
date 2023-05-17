@@ -10,7 +10,7 @@ $image_upload_path = "uploads/images/flickr/";
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Flickr Photos - ClickForDern </h6>
+            <h6 class="m-0 font-weight-bold text-primary">Recent Works - ClickForDern </h6>
         </div>
     </div>
 
@@ -30,8 +30,8 @@ $image_upload_path = "uploads/images/flickr/";
                             <thead>
                                 <tr>
                                     <th> ID </th>
-                                    <th> Flickr Image </th>
-                                    <th>Update (Image 400 x 400 px)</th>
+                                    <th> Recent Works </th>
+                                    <th> Update (Image 400 x 400 px)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,7 +43,7 @@ $image_upload_path = "uploads/images/flickr/";
                                             <td>
                                                 <?php echo $row['id']; ?>
                                             </td>
-                                            <td><?php echo '<img src = "' . $image_upload_path . $row['image'] . '" width = "100px;" height = "85px;" alt = "FLICKR IMAGE">' ?></td>
+                                            <td><?php echo '<img src = "' . $image_upload_path . $row['image'] . '" width = "100px;" height = "85px;" alt = "RECENET WORKS">' ?></td>
 
                                             <td>
 

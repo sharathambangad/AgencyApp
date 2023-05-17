@@ -105,7 +105,7 @@
                 <a href="career.php">Career</a>
               </li>
               <li class="dropdown">
-                <a href="blog-rightside.html">Blog </a>
+                <a href="blog.php">Blog </a>
               </li>
               <li class="dropdown">
                 <a href="about-us.php">About Us </a>
@@ -128,7 +128,7 @@
           <ul class="slides">
             <li>
               <div class="overlay2">
-                <img class="" src="images/slider/bg1.jpg" alt="slider" />
+                <img class="" src="images/slider/hpg1.jpg" alt="slider" />
               </div>
               <div class="flex-caption slider-content">
                 <div class="col-md-12 text-center">
@@ -144,7 +144,7 @@
             </li>
             <li>
               <div class="overlay2">
-                <img class="" src="images/slider/bg2.jpg" alt="slider" />
+                <img class="" src="images/slider/hpg2.jpg" alt="slider" />
               </div>
               <div class="flex-caption slider-content">
                 <div class="col-md-12 text-center">
@@ -158,7 +158,28 @@
             </li>
             <li>
               <div class="overlay2">
-                <img class="" src="images/slider/bg3.jpg" alt="slider" />
+                <img class="" src="images/slider/hpg3.jpg" alt="slider" />
+              </div>
+              <div class="flex-caption slider-content">
+                <div class="col-md-12 text-center">
+                  <h2 class="animated7">Your Challenge is Our Progress</h2>
+                  <h3 class="animated8">
+                    So, You Don't Need to Go Anywhere Today
+                  </h3>
+                  <div class="">
+                    <a class="animated4 slider btn btn-primary btn-min-block white" href="contact.php">Call Now</a>
+                    <!-- <a
+                        class="animated4 slider btn btn-primary btn-min-block solid"
+                        href="#"
+                        >Live Demo</a
+                      > -->
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="overlay2">
+                <img class="" src="images/slider/hpg4.jpg" alt="slider" />
               </div>
               <div class="flex-caption slider-content">
                 <div class="col-md-12 text-center">
@@ -188,60 +209,61 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-6 ts-padding" style="
-                height: 650px;
-                background: url(images/image-block-bg.jpg) 50% 50% / cover
-                  no-repeat;
-              "></div>
+                height: 750px;
+                background: url(images/homepagecf.jpg) 100% 100% / cover
+                  no-repeat;">
+          </div>
           <div class="col-md-6 ts-padding img-block-right">
-            <div class="img-block-head text-center">
-              <h2>Know More About Our Company</h2>
-              <h3>Why Choose Us</h3>
-              <p>
-                Aenean sollicitudin, lorem quis bibendum auctor, nisi elit
-                consequat ipsum, nec sagittis sem nibh id elit. Proin gravida
-                nibh vel velit auctor Aenean sollicitudin, adipisicing elit
-                sed lorem quis bibendum auctor.
+          <div class="img-block-head text-center">
+            <h2>Know More About Our Company</h2>
+            <h3>Why Choose Us</h3>
+            <p style="text-align: justify;text-justify: inter-word;">
+              These three factors highlight our company's strengths in terms of creativity,
+              strategic market intelligence, and offering complete end-to-end solutions,
+              which makes us the perfect partner for any company looking to run effective marketing campaigns.
+            </p>
+          </div>
+
+          <div class="gap-30"></div>
+
+          <div class="image-block-content">
+            <span class="feature-icon pull-left"><i class="fa fa-bicycle"></i></span>
+            <div class="feature-content">
+              <h3>Cutting-Edge Creativity</h3>
+              <p style="text-align: justify;text-justify: inter-word;">
+                we pride ourselves on our cutting-edge creativity.
+                Our team of talented and experienced professionals possesses a deep
+                understanding of the latest industry trends, consumer insights, and emerging technologies
               </p>
             </div>
-
-            <div class="gap-30"></div>
-
-            <div class="image-block-content">
-              <span class="feature-icon pull-left"><i class="fa fa-bicycle"></i></span>
-              <div class="feature-content">
-                <h3>Tons of Features</h3>
-                <p>
-                  Consectetur adipisicing elit sed do eiusmod tempor
-                  incididunt ut
-                </p>
-              </div>
-            </div>
-            <!--/ End 1st block -->
-
-            <div class="image-block-content">
-              <span class="feature-icon pull-left"><i class="fa fa-diamond"></i></span>
-              <div class="feature-content">
-                <h3>PowerPack Theme</h3>
-                <p>
-                  Proin gravida nibh vel velit auctor Aenean sollicitudin
-                  adipisicing
-                </p>
-              </div>
-            </div>
-            <!--/ End 1st block -->
-
-            <div class="image-block-content">
-              <span class="feature-icon pull-left"><i class="fa fa-street-view"></i></span>
-              <div class="feature-content">
-                <h3>Day Night Support</h3>
-                <p>
-                  Simply dummy text and typesettings industry has been the
-                  industry
-                </p>
-              </div>
-            </div>
-            <!--/ End 1st block -->
           </div>
+          <!--/ End 1st block -->
+
+          <div class="image-block-content">
+            <span class="feature-icon pull-left"><i class="fa fa-diamond"></i></span>
+            <div class="feature-content">
+              <h3>Strategic Market Insight</h3>
+              <p style="text-align: justify;text-justify: inter-word;">
+                excels at providing valuable market intelligence that drives successful campaigns.
+                We conduct in-depth research and analysis to identify target demographics,
+                consumer behavior patterns, and market trends
+              </p>
+            </div>
+          </div>
+          <!--/ End 1st block -->
+
+          <div class="image-block-content">
+            <span class="feature-icon pull-left"><i class="fa fa-street-view"></i></span>
+            <div class="feature-content">
+              <h3>Seamless End-to-End Solutions</h3>
+              <p style="text-align: justify;text-justify: inter-word;">
+                We offer seamless end-to-end advertising solutions that simplify the process for our clients.
+                From initial concept development to campaign execution and performance tracking,
+                we handle every aspect of the advertising journey
+              </p>
+            </div>
+          </div>
+            <!--/ End 1st block -->
         </div>
       </div>
     </section>

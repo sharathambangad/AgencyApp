@@ -59,7 +59,7 @@ $flickr_image_path = "admin/uploads/images/flickr/";
             <!--/ End Recent Posts-->
 
             <div class="col-md-4 col-sm-12 footer-widget">
-                <h3 class="widget-title">Flickr Photos</h3>
+                <h3 class="widget-title">Recent Works</h3>
             
                 <div class="img-gallery">
                     <div class="img-container">
@@ -77,15 +77,6 @@ $flickr_image_path = "admin/uploads/images/flickr/";
                             }
                         }
                         ?>
-                        <!-- <a class="thumb-holder-flikr" data-rel="prettyPhoto" href="images/gallery/2.jpg">
-                            <img src="images/gallery/2.jpg" alt="" />
-                        </a>
-                        <a class="thumb-holder-flikr" data-rel="prettyPhoto" href="images/gallery/3.jpg">
-                            <img src="images/gallery/3.jpg" alt="" />
-                        </a>
-                        <a class="thumb-holder-flikr" data-rel="prettyPhoto" href="images/gallery/4.jpg">
-                            <img src="images/gallery/4.jpg" alt="" />
-                        </a> -->
                     </div>
                 </div>
             </div>

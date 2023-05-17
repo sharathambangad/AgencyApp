@@ -94,7 +94,7 @@ $about_image_path = "admin/uploads/images/team/";
                 <a href="career.php">Career</a>
               </li>
               <li class="dropdown">
-                <a href="blog-rightside.html">Blog</a>
+                <a href="blog.php">Blog</a>
               </li>
               <li class="dropdown active">
                 <a href="about-us.php">About Us</a>
@@ -111,7 +111,7 @@ $about_image_path = "admin/uploads/images/team/";
     <!--/ Header end -->
 
     <div id="banner-area">
-      <img src="images/banner/banner1.jpg" alt="" />
+      <img src="images/banner/aboutuspage.jpg" style="width:100%;" alt="" />
       <div class="parallax-overlay"></div>
       <!-- Subpage title start -->
       <div class="banner-title-content">
@@ -137,7 +137,7 @@ $about_image_path = "admin/uploads/images/team/";
           <div class="col-md-12 heading text-center">
             <h2 class="title2">
               About Our Company
-              <span class="title-desc">A Quality Experience Team with 4 years experience</span>
+              <span class="title-desc">A Quality Experience Team with 2 years experience</span>
             </h2>
           </div>
         </div>
@@ -145,51 +145,90 @@ $about_image_path = "admin/uploads/images/team/";
 
         <div class="row about-wrapper-top">
           <div class="col-md-6 ts-padding about-message">
-            <h3>Who We Are</h3>
-            <p>
-              "Cras mattis consectetur purus sit amet fermentum. Etiam porta
-              sem malesuada magna mollis euismod. Aenean eu leo quam.
-              Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed
-              posuere consectetur est at lobortis. Donec ullamcorper nulla non
-              metus auctor fringilla. Lorem ipsum dolor sit amet mattis ut
-              consequat mauris cursus.
+            <h3>Who We Are: A Creative Advertising Company</h3>
+            <p style="text-align: justify;text-justify: inter-word;">
+              "we are a dynamic and forward-thinking creative advertising company
+              that specializes in delivering exceptional results for our clients
+              in both virtual and traditional advertising spaces. With our comprehensive
+              range of services and innovative approach, we help businesses thrive and stand
+              out in today's competitive market
             </p>
-            <p>
-              Curabitur metus felis, venenatis eu ultricies vel, vehicula eu
-              urna. Phasellus eget augue id est fringilla feugiat id a tellus.
-              Sed hendrerit quam sed ante euismod posuere element ante."
+            <p style="text-align: justify;text-justify: inter-word;">
+              Our Team of Experts:
+              We boast a team of highly skilled and passionate professionals
+              who are dedicated to crafting outstanding advertising campaigns
+              that make an impact. From creative strategists to graphic designers,
+              copywriters to digital marketers, our team members bring their expertise
+              and creative flair to every project.
+            </p>
+            <p style="text-align: justify;text-justify: inter-word;">
+              Our Unique Blend of Success:
+              We understand that the advertising landscape is rapidly evolving,
+              and we stay at the forefront of industry trends to ensure our clients' success.
+              Whether it's harnessing the power of digital platforms or utilizing traditional
+              advertising mediums, we create customized strategies that resonate with your target
+              audience and drive results"
             </p>
           </div>
           <!--/ About message end -->
           <div class="col-md-6 ts-padding about-img" style="
-                height: 374px;
-                background: url(images/pages/about-1.jpg) 50% 50% / cover
-                  no-repeat;
-              "></div>
+                height: 500px; 
+                background: url(images/pages/ap3.jpg) 100% 100% / cover
+                no-repeat;">
+          </div>
           <!--/ About image end -->
         </div>
         <!--/ Content row end -->
 
         <div class="row about-wrapper-bottom">
           <div class="col-md-6 ts-padding about-img" style="
-                height: 374px;
-                background: url(images/pages/about-2.jpg) 50% 50% / cover
+                height: 500px;
+                background: url(images/pages/ap1.jpg) 100% 100% / cover
                   no-repeat;
               "></div>
           <!--/ About image end -->
           <div class="col-md-6 ts-padding about-message">
             <h3>What We Do</h3>
-            <p>
-              "Cras mattis consectetur purus sit amet fermentum. Etiam porta
-              sem malesuada magna mollis euismod. Aenean eu leo quam.
-              Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed
-              posuere consectetur est at lobortis.
+            <p style="text-align: justify;text-justify: inter-word;">
+              "As a creative advertising company,
+              our major objective is to create captivating and interesting elements
+              that will aid in the successful promotion of our customer's goods and services.
+              Here are some essential tasks and places where a creative advertising firm should concentrate.
             </p>
             <ul class="unstyled arrow">
-              <li><a href="#">Etiam porta sem malesuada</a></li>
-              <li><a href="#">Pellentesque ornare sem lacinia</a></li>
-              <li><a href="#">Cras mattis consectetur purus</a></li>
-              <li><a href="#">Sed hendrerit quam sed ante</a></li>
+              <a href="blog.php">
+                <li>Brand Strategy</li>
+              </a>
+              <a href="blog.php">
+                <li>Creative Concept Development</li>
+              </a>
+              <a href="blog.php">
+                <li>Visual Design</li>
+              </a>
+              <a href="blog.php">
+                <li>Video Production</li>
+              </a>
+              <a href="blog.php">
+                <li>Digital Marketing</li>
+              </a>
+              <a href="blog.php">
+                <li>Market Research and Analysis</li>
+              </a>
+              <a href="blog.php">
+                <li>Campaign Analytics and Reporting</li>
+              </a>
+              <a href="blog.php">
+                <li>Digital Advertising</li>
+              </a>
+              <a href="blog.php">
+                <li>Print Production</li>
+              </a>
+              <a href="blog.php">
+                <li>Logo and Branding</li>
+              </a>
+              <a href="blog.php">
+                <li>Graphic Design</li>
+              </a>
             </ul>
           </div>
           <!--/ About message end -->
@@ -211,7 +250,7 @@ $about_image_path = "admin/uploads/images/team/";
             <div class="col-md-12 heading text-center">
               <h2 class="title2">
                 Meet With Our Company
-                <span class="title-desc">A Quality Experience Team with 4 years experience</span>
+                <span class="title-desc">A Quality Experience Team with 2 years experience</span>
               </h2>
             </div>
           </div>
@@ -251,90 +290,6 @@ $about_image_path = "admin/uploads/images/team/";
               }
             }
             ?>
-            <!-- <div class="col-md-3 col-sm-6">
-              <div class="team wow slideInLeft">
-                <div class="img-hexagon">
-                  <img src="images/team/team1.jpg" alt="" />
-                  <span class="img-top"></span>
-                  <span class="img-bottom"></span>
-                </div>
-                <div class="team-content">
-                  <h3>Vosgi Varduhi</h3>
-                  <p>Web Designer</p>
-                  <div class="team-social">
-                    <a class="fb" href="#"><i class="fa fa-facebook"></i></a>
-                    <a class="twt" href="#"><i class="fa fa-twitter"></i></a>
-                    <a class="gplus" href="#"><i class="fa fa-google-plus"></i></a>
-                    <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
-                    <a class="dribble" href="#"><i class="fa fa-dribbble"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!--/ Team 1 end -->
-            <!-- <div class="col-md-3 col-sm-6">
-              <div class="team wow slideInLeft">
-                <div class="img-hexagon">
-                  <img src="images/team/team2.jpg" alt="" />
-                  <span class="img-top"></span>
-                  <span class="img-bottom"></span>
-                </div>
-                <div class="team-content">
-                  <h3>Robert Aleska</h3>
-                  <p>Web Designer</p>
-                  <div class="team-social">
-                    <a class="fb" href="#"><i class="fa fa-facebook"></i></a>
-                    <a class="twt" href="#"><i class="fa fa-twitter"></i></a>
-                    <a class="gplus" href="#"><i class="fa fa-google-plus"></i></a>
-                    <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
-                    <a class="dribble" href="#"><i class="fa fa-dribbble"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!--/ Team 2 end -->
-            <!-- <div class="col-md-3 col-sm-6">
-              <div class="team wow slideInRight">
-                <div class="img-hexagon">
-                  <img src="images/team/team3.jpg" alt="" />
-                  <span class="img-top"></span>
-                  <span class="img-bottom"></span>
-                </div>
-                <div class="team-content">
-                  <h3>Taline Voski</h3>
-                  <p>Web Designer</p>
-                  <div class="team-social">
-                    <a class="fb" href="#"><i class="fa fa-facebook"></i></a>
-                    <a class="twt" href="#"><i class="fa fa-twitter"></i></a>
-                    <a class="gplus" href="#"><i class="fa fa-google-plus"></i></a>
-                    <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
-                    <a class="dribble" href="#"><i class="fa fa-dribbble"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!--/ Team 3 end -->
-            <!-- <div class="col-md-3 col-sm-6">
-              <div class="team animate wow slideInRight">
-                <div class="img-hexagon">
-                  <img src="images/team/team4.jpg" alt="" />
-                  <span class="img-top"></span>
-                  <span class="img-bottom"></span>
-                </div>
-                <div class="team-content">
-                  <h3>Alban Spencer</h3>
-                  <p>Web Designer</p>
-                  <div class="team-social">
-                    <a class="fb" href="#"><i class="fa fa-facebook"></i></a>
-                    <a class="twt" href="#"><i class="fa fa-twitter"></i></a>
-                    <a class="gplus" href="#"><i class="fa fa-google-plus"></i></a>
-                    <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
-                    <a class="dribble" href="#"><i class="fa fa-dribbble"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!--/ Team 4 end -->
           </div>
           <!--/ Content row end -->
         </div>

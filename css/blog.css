@@ -6,20 +6,21 @@
   text-align: center;
 }
 .service-short-desc {
-  text-align: center;
+  /* text-align: center; */
   padding: 0 14px;
-
+  text-align: justify;
+  text-justify: inter-word;
 }
 .hexagon-area .hexagon {
   position: relative;
-  width: 90px;
-  height: 100px;
+  width:250px;
+  height:250px;
   margin: 0 auto !important;
-  clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
+  /* clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%); */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #49a2e7;
+  background-color: #ffffff;
   cursor: pointer;
   transition: transform 0.4s;
 }

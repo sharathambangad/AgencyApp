@@ -1,7 +1,7 @@
 <?php
 include('admin/config/dbconfig.php');
 $id = $_GET['id'];
-$unmasked_id = openssl_decrypt($id, "AES-128-ECB", "clifod!@#123");
+$unmasked_id = base64_decode($id);
 $query = "SELECT * FROM service WHERE id='$unmasked_id'";
 $query_run = mysqli_query($connection, $query);
 if (mysqli_num_rows($query_run) > 0) {
@@ -16,6 +16,7 @@ if (mysqli_num_rows($query_run) > 0) {
 	<!-- Basic Page Needs
 	================================================== -->
 	<meta charset="utf-8">
+	
 	<title><?php echo $row['service_name'] . "-ClickForDern" ?></title>
 	<meta name="description" content="<?php echo $row['description'] ?>">
 	<meta name="keywords" content="<?php echo $row['seo_keywords'] ?>">
@@ -101,7 +102,7 @@ if (mysqli_num_rows($query_run) > 0) {
 								<a href="career.php">Career</a>
 							</li>
 							<li class="dropdown">
-								<a href="blog-rightside.html">Blog </a>
+								<a href="blog.php">Blog </a>
 							</li>
 							<li class="dropdown">
 								<a href="about-us.php">About Us </a>
@@ -117,7 +118,7 @@ if (mysqli_num_rows($query_run) > 0) {
 		</header>
 
 		<div id="banner-area">
-			<img src="images/banner/banner2.jpg" alt="" />
+			<img src="images/banner/servicepage.jpg" style="width:100%;" alt="" />
 			<div class="parallax-overlay"></div>
 			<!-- Subpage title start -->
 			<div class="banner-title-content">

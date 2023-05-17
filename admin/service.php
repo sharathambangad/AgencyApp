@@ -14,7 +14,7 @@ $image_upload_path = "uploads/images/";
         SERVICES
     </h1>
 
-    <button type="button" class="btn btn-primary mb-3 " data-toggle="modal" data-target="#addteamprofile">
+    <button type="button" class="btn btn-primary mb-3 " data-toggle="modal" data-target="#addservice">
         Add New Service
     </button>
 
@@ -29,15 +29,13 @@ $image_upload_path = "uploads/images/";
                         $query = "SELECT * FROM service";
                         $query_run = mysqli_query($connection, $query);
                         ?>
-                        <table class="table table-bordered table-striped table-hover table-active text-center" id="myTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-striped table-hover table-active text-center" id="servTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th> ID </th>
                                     <th> Service</th>
                                     <th> Service Image</th>
                                     <th> Icon</th>
-                                    <th> Short Description </th>
-                                    <th> Description</th>
                                     <th> SEO Keyword</th>
                                     <th> Update</th>
                                     <th> Move to Trash</th>
@@ -51,13 +49,8 @@ $image_upload_path = "uploads/images/";
                                         <tr id="row_id_<?php echo $row['id']; ?>">
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['service_name']; ?></td>
-                                            <td><?php echo '<img src = "' . $image_upload_path . 'services/' . $row['service_image'] . '" width = "200px;" height = "50px;" alt = "SERVICE IMAGE">' ?></td>
+                                            <td><?php echo '<img src = "' . $image_upload_path . 'services/' . $row['service_image'] . '" width = "200px;" height = "70px;" alt = "SERVICE IMAGE">' ?></td>
                                             <td><?php echo $row['icon_svg']; ?></td>
-                                            <td><?php echo $row['short_desc']; ?></td>
-                                            <td class="fulljustify">
-
-                                                <?php echo $row['description']; ?>
-                                            </td>
                                             <td><?php echo $row['seo_keywords']; ?></td>
                                             <td>
                                                 <form action=" service_edit.php" method="post">
@@ -90,7 +83,7 @@ $image_upload_path = "uploads/images/";
     <!-- /.container-fluid -->
 
 
-    <div class="modal fade" id="addteamprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addservice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

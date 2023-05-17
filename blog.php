@@ -1,6 +1,6 @@
 <?php
 include('admin/config/dbconfig.php');
-$service_image_path = "admin/uploads/images/services/";
+$blog_image_path = "admin/uploads/images/blogs/";
 ?>
 
 
@@ -11,7 +11,7 @@ $service_image_path = "admin/uploads/images/services/";
   <!-- Basic Page Needs
 	================================================== -->
   <meta charset="utf-8" />
-  <title>Services</title>
+  <title>ClickForDern-Blog</title>
   <meta name="description" content="" />
   <meta name="author" content="" />
 
@@ -25,10 +25,10 @@ $service_image_path = "admin/uploads/images/services/";
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/favicon-144x144.png" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/favicon-72x72.png" />
   <link rel="apple-touch-icon-precomposed" href="img/favicon/favicon-54x54.png" />
+
   <!-- CSS
 	================================================== -->
-  <link rel="stylesheet" href="css/service.css">
-
+  <link rel="stylesheet" href="css/blog.css">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <!-- Template styles-->
@@ -84,7 +84,7 @@ $service_image_path = "admin/uploads/images/services/";
               <li class="dropdown">
                 <a href="index.php">Home</a>
               </li>
-              <li class="dropdown active">
+              <li class="dropdown">
                 <a href="service.php">Services</a>
               </li>
               <li class="dropdown">
@@ -93,7 +93,7 @@ $service_image_path = "admin/uploads/images/services/";
               <li class="dropdown">
                 <a href="career.php">Career</a>
               </li>
-              <li class="dropdown">
+              <li class="dropdown active">
                 <a href="blog.php">Blog </a>
               </li>
               <li class="dropdown">
@@ -109,16 +109,17 @@ $service_image_path = "admin/uploads/images/services/";
       <!--/ Container end -->
     </header>
     <!--/ Header end -->
+
     <div id="banner-area">
-      <img src="images/banner/servicepage.jpg" style="width:100%;" alt="" />
+      <img src="images/banner/blogpage.jpg" style="width:100%;" alt="" />
       <div class="parallax-overlay"></div>
       <!-- Subpage title start -->
       <div class="banner-title-content">
         <div class="text-center">
-          <h2>Services</h2>
+          <h2>Blogs</h2>
           <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>
-            <li>Services</li>
+            <li>Blogs</li>
           </ul>
         </div>
       </div>
@@ -132,37 +133,31 @@ $service_image_path = "admin/uploads/images/services/";
       <div class="container">
         <!-- Services -->
 
-        <div class="row">
-          <div class="col-md-12 heading">
-            <span class="title-icon classic pull-left"><i class="fa fa-cogs"></i></span>
-            <h2 class="title classic">Our Services</h2>
-          </div>
-        </div>
 
         <div class="row">
           <div class="col-md-12">
             <div class="hexagon-area">
               <?php
-              $query = "SELECT * FROM service";
+              $query = "SELECT * FROM blogs";
               $query_run = mysqli_query($connection, $query);
 
               if (mysqli_num_rows($query_run) > 0) {
                 while ($row = mysqli_fetch_assoc($query_run)) {
               ?>
-                <div class="service-container wow fadeInDown" data-wow-delay=".5s">
-                  <div class="service-content text-center">
-                    <div class="hexagon">
-                      <?php
-                      $encoded = base64_encode($row['id']);
-                      echo "<a href='service-single.php?id=" . $encoded . "'>" . $row['icon_svg'] . "</a>"
-                      ?>
+                  <div class="service-container">
+                    <div class="service-content text-center">
+                      <div class="hexagon">
+                        <?php
+                        echo '<img src="' . $blog_image_path . $row['blog_db_image'] . '" class="img-responsive" alt="" />'
+                        ?>
+                        <span class="blog-date"> <?php echo $row['blog_db_date']; ?></span>
+                      </div>
+                      <h3> <?php echo $row['blog_title']; ?> </h3>
+                      <p class="service-short-desc">
+                        <?php echo $row['description']; ?>
+                      </p>
                     </div>
-                    <h3> <?php echo $row['service_name']; ?> </h3>
-                    <p class="service-short-desc">
-                      <?php echo $row['short_desc']; ?>
-                    </p>
                   </div>
-                </div>
               <?php
                 }
               }

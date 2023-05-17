@@ -597,7 +597,7 @@ if (isset($_POST['save_service_btn'])) {
     $short_desc = mysqli_real_escape_string($connection, $_POST['service_short_desc']);
     $desc = mysqli_real_escape_string($connection, $_POST['service_desc']);
     $seo_keys = mysqli_real_escape_string($connection, $_POST['service_seo_keys']);
-    $icon_svg = mysqli_real_escape_string($connection, $_POST['service_icon']);
+    $icon_svg = $_POST['service_icon'];
     $image = $_FILES['service_image']['name'];
 
     $file_extension = pathinfo($_FILES["service_image"]["name"], PATHINFO_EXTENSION);
@@ -611,7 +611,7 @@ if (isset($_POST['save_service_btn'])) {
         $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
         $_SESSION['status_code'] = "warning";
         header('Location: service.php');
-    } elseif ($_FILES["careers_poster_image"]["size"] > 2097152) {
+    } elseif ($_FILES["service_image"]["size"] > 2097152) {
 
         $_SESSION['status'] = "Image size exceeds 2MB";
         $_SESSION['status_code'] = "warning";
@@ -859,3 +859,163 @@ if (isset($_POST['update_flikr_img_btn'])) {
         header('Location: address.php');
     }
 }
+
+/* ----------------------------- END FLICKR ------------------------------*/
+
+/* BLOGS  */
+
+if (isset($_POST['save_blog_btn'])) {
+
+    $title = mysqli_real_escape_string($connection, $_POST['blog_title']);
+    $date = mysqli_real_escape_string($connection, $_POST['blog_date']);
+    $desc = mysqli_real_escape_string($connection, $_POST['blog_desc']);
+
+    $image = $_FILES['blog_image']['name'];
+
+    $file_extension = pathinfo($_FILES["blog_image"]["name"], PATHINFO_EXTENSION);
+    $fileinfo = @getimagesize($_FILES["blog_image"]["tmp_name"]);
+    $width = $fileinfo[0];
+    $height = $fileinfo[1];
+
+
+    if (!in_array($file_extension, $allowed_image_extension)) {
+
+        $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
+        $_SESSION['status_code'] = "warning";
+        header('Location: blogs.php');
+    } elseif ($_FILES["blog_image"]["size"] > 2097152) {
+
+        $_SESSION['status'] = "Image size exceeds 2MB";
+        $_SESSION['status_code'] = "warning";
+        header('Location: blogs.php');
+    } elseif ($width != "750" || $height != "450") {
+
+        $_SESSION['status'] = "Image dimension should be 750x450";
+        $_SESSION['status_code'] = "warning";
+        header('Location: blogs.php');
+    } else {
+        $info = pathinfo($_FILES['blog_image']['name']);
+        $ext = $info['extension'];
+        $file_name = time() . '.' . $ext;
+
+        $query = "INSERT INTO blogs (`blog_title`,`blog_db_date`,`description`,`blog_db_image`) VALUES ('$title','$date', '$desc','$file_name')";
+        $query_run = mysqli_query($connection, $query);
+
+        if ($query_run) {
+            move_uploaded_file($_FILES['blog_image']['tmp_name'], $image_upload_path . "blogs/" . $file_name);
+            $_SESSION['status'] = "Blog Added Successfully";
+            $_SESSION['status_code'] = "success";
+            header('Location: blogs.php');
+        } else {
+            $_SESSION['status'] = "Blog Not Added";
+            $_SESSION['status_code'] = "error";
+            header('Location: blogs.php');
+        }
+    }
+}
+
+//EDIT or UPDATE BLOGS
+if (isset($_POST['update_blogs_btn'])) {
+
+    $edit_id = mysqli_real_escape_string($connection, $_POST['edit_blog_id']);
+    $edit_title = mysqli_real_escape_string($connection, $_POST['edit_blog_title']);
+    $edit_date = mysqli_real_escape_string($connection, $_POST['edit_blog_date']);
+    $edit_desc = mysqli_real_escape_string($connection, $_POST['edit_blog_desc']);
+
+    $edit_blog_image = $_FILES['blog_image']['name'];
+
+    $image_query = "SELECT * from blogs WHERE id = '$edit_id'";
+    $image_query_run = mysqli_query($connection, $image_query);
+
+    foreach ($image_query_run as $image_row) {
+        $file_name = $image_row['blog_db_image'];
+        if ($edit_blog_image != NULL) {
+
+            $file_extension = pathinfo($_FILES["blog_image"]["name"], PATHINFO_EXTENSION);
+            $fileinfo = @getimagesize($_FILES["blog_image"]["tmp_name"]);
+            $width = $fileinfo[0];
+            $height = $fileinfo[1];
+
+
+            if (!in_array($file_extension, $allowed_image_extension)) {
+
+                $_SESSION['status'] = "Upload valid images. Only PNG and JPEG are allowed.";
+                $_SESSION['status_code'] = "warning";
+                header('Location: blogs.php');
+                exit(0);
+            } elseif ($_FILES["blog_image"]["size"] > 2097152) {
+
+                $_SESSION['status'] = "Image size exceeds 2MB";
+                $_SESSION['status_code'] = "warning";
+                header('Location: blogs.php');
+                exit(0);
+            } elseif ($width != "750" || $height != "450") {
+
+                $_SESSION['status'] = "Image dimension should be 750x450";
+                $_SESSION['status_code'] = "warning";
+                header('Location: blogs.php');
+                exit(0);
+            }
+            //update with new image and delete old image
+            elseif ($image_path = $image_upload_path . "blogs/" . $image_row['blog_db_image']) {
+                unlink($image_path);
+                $info = pathinfo($_FILES['blog_image']['name']);
+                $ext = $info['extension'];
+                $file_name = time() . '.' . $ext;
+            }
+        }
+    }
+
+
+    $query = "UPDATE blogs SET blog_title ='$edit_title', blog_db_image ='$file_name', blog_db_date ='$edit_date', description ='$edit_desc' WHERE id = '$edit_id'";
+
+    $query_run = mysqli_query($connection, $query);
+
+
+    if ($query_run) {
+        if ($edit_blog_image == NULL) {
+            $_SESSION['status'] = "Blog Updated Successfully";
+            $_SESSION['status_code'] = "success";
+            header('Location: blogs.php');
+        } else {
+            move_uploaded_file($_FILES['blog_image']['tmp_name'], $image_upload_path . "blogs/" . $file_name);
+            $_SESSION['status'] = "Blog Updated Successfully";
+            $_SESSION['status_code'] = "success";
+            header('Location: blogs.php');
+        }
+    } else {
+        $_SESSION['status'] = "Blog Not Updated";
+        $_SESSION['status_code'] = "error";
+        header('Location: blogs.php');
+    }
+}
+
+//DELETE BLOGS
+if (isset($_POST['blog_delete_btn'])) {
+    $id = mysqli_real_escape_string($connection, $_POST['blog_delete_id']);
+    $delete_image_query = "SELECT * from blogs WHERE id = '$id'";
+    $delete_image_query_run = mysqli_query($connection, $delete_image_query);
+
+    if ($delete_image_query_run) {
+        foreach ($delete_image_query_run as $image_row) {
+            $delete_image = $image_row['blog_db_image'];
+        }
+    }
+
+    $delete_image_path = $image_upload_path . "blogs/" . $delete_image;
+
+    $query = "DELETE from blogs WHERE id = '$id'";
+    $query_run = mysqli_query($connection, $query);
+
+    if ($query_run) {
+        if (file_exists($delete_image_path)) {
+            unlink($delete_image_path);
+        }
+        echo 200;
+    } else {
+        echo 500;
+    }
+}
+
+/* ----------------------------- END BLOGS ------------------------------*/
+

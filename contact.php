@@ -9,7 +9,7 @@ include('admin/config/dbconfig.php');
   <!-- Basic Page Needs
 	================================================== -->
   <meta charset="utf-8" />
-  <title>BizCraft - Responsive Html5 Template</title>
+  <title>ClickForDern-Contact Us</title>
   <meta name="description" content="" />
   <meta name="author" content="" />
 
@@ -92,7 +92,7 @@ include('admin/config/dbconfig.php');
                 <a href="career.php">Career</a>
               </li>
               <li class="dropdown">
-                <a href="blog-rightside.html">Blog </a>
+                <a href="blog.php">Blog </a>
               </li>
               <li class="dropdown">
                 <a href="about-us.php">About Us </a>
@@ -109,7 +109,7 @@ include('admin/config/dbconfig.php');
     <!--/ Header end -->
 
     <div id="banner-area">
-      <img src="images/banner/banner2.jpg" alt="" />
+      <img src="images/banner/contactpage.jpg" style="width:100%;" alt="" />
       <div class="parallax-overlay"></div>
       <!-- Subpage title start -->
       <div class="banner-title-content">
@@ -117,7 +117,7 @@ include('admin/config/dbconfig.php');
           <h2>Contact Us</h2>
           <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>
-            <li>Contact</li>
+            <li>Contact Us</li>
           </ul>
         </div>
       </div>
@@ -160,7 +160,7 @@ include('admin/config/dbconfig.php');
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Service</label>
-                      <select class="form-control" name="services" required>
+                    <select class="form-control" name="services" required>
                       <option selected disabled value="">Choose the Service</option>
                       <?php
                       $query = "SELECT service_name FROM service";

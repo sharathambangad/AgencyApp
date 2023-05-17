@@ -1,8 +1,7 @@
 <?php
 include('admin/config/dbconfig.php');
-$service_image_path = "admin/uploads/images/services/";
+$blog_image_path = "admin/uploads/images/blogs/";
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +10,7 @@ $service_image_path = "admin/uploads/images/services/";
   <!-- Basic Page Needs
 	================================================== -->
   <meta charset="utf-8" />
-  <title>Services</title>
+  <title>ClickForDern-Blog</title>
   <meta name="description" content="" />
   <meta name="author" content="" />
 
@@ -25,10 +24,10 @@ $service_image_path = "admin/uploads/images/services/";
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/favicon-144x144.png" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/favicon-72x72.png" />
   <link rel="apple-touch-icon-precomposed" href="img/favicon/favicon-54x54.png" />
+
   <!-- CSS
 	================================================== -->
   <link rel="stylesheet" href="css/service.css">
-
   <!-- Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <!-- Template styles-->
@@ -84,7 +83,7 @@ $service_image_path = "admin/uploads/images/services/";
               <li class="dropdown">
                 <a href="index.php">Home</a>
               </li>
-              <li class="dropdown active">
+              <li class="dropdown">
                 <a href="service.php">Services</a>
               </li>
               <li class="dropdown">
@@ -93,7 +92,7 @@ $service_image_path = "admin/uploads/images/services/";
               <li class="dropdown">
                 <a href="career.php">Career</a>
               </li>
-              <li class="dropdown">
+              <li class="dropdown active">
                 <a href="blog.php">Blog </a>
               </li>
               <li class="dropdown">
@@ -109,16 +108,17 @@ $service_image_path = "admin/uploads/images/services/";
       <!--/ Container end -->
     </header>
     <!--/ Header end -->
+
     <div id="banner-area">
-      <img src="images/banner/servicepage.jpg" style="width:100%;" alt="" />
+      <img src="images/banner/blogpage.jpg" style="width:100%;" alt="" />
       <div class="parallax-overlay"></div>
       <!-- Subpage title start -->
       <div class="banner-title-content">
         <div class="text-center">
-          <h2>Services</h2>
+          <h2>Blogs</h2>
           <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>
-            <li>Services</li>
+            <li>Blogs</li>
           </ul>
         </div>
       </div>
@@ -126,59 +126,56 @@ $service_image_path = "admin/uploads/images/services/";
     </div>
     <!-- Banner area end -->
 
-    <!-- Main container start -->
-
+    <!-- Blog details page start -->
     <section id="main-container">
       <div class="container">
-        <!-- Services -->
-
         <div class="row">
-          <div class="col-md-12 heading">
-            <span class="title-icon classic pull-left"><i class="fa fa-cogs"></i></span>
-            <h2 class="title classic">Our Services</h2>
+          <!-- Blog start -->
+          <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> -->
+          <div class="grid-container">
+              <!-- 1st post start -->
+              <div class="post">
+                <!-- post image start -->
+                <div class="post-image-wrapper">
+                  <img src="images/portfolio/blog1.jpg" class="img-responsive" alt="IMG" />
+                  <span class="blog-date"> 12-01-2022</span>
+                </div>
+                <!-- post image end -->
+                <div class="post-header clearfix">
+                  <h2 class="post-title">
+                    heading
+                  </h2>
+                  <div class="post-meta">
+                    <span class="post-meta-author">Posted by Admin</span>
+                    <div class="pull-right">
+                      <span class="post-meta-comments"><i class="fa fa-comment-o"></i> 0</span>
+                      <span class="post-meta-hits"><i class="fa fa-heart-o"></i> 0</span>
+                    </div>
+                  </div>
+                  <!-- post meta end -->
+                </div>
+                <!-- post heading end -->
+                <div class="post-body">
+                  <p style=" text-align: justify;text-justify: inter-word;">
+                    we are a dynamic and forward-thinking creative advertising company that
+                    specializes in delivering exceptional results for our clients in both virtual
+                    and traditional advertising spaces. With our comprehensive range of services and
+                    innovative approach, we help businesses thrive and stand out in today's competitive market.
+                    we are a dynamic and forward-thinking creative advertising company that
+                    specializes in delivering exceptional results for our clients in both virtual
+                    and traditional advertising spaces. With our comprehensive range of services and
+                    innovative approach, we help businesses thrive and stand out in today's competitive market.
+                  </p>
+                </div>
+              </div>
           </div>
         </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="hexagon-area">
-              <?php
-              $query = "SELECT * FROM service";
-              $query_run = mysqli_query($connection, $query);
-
-              if (mysqli_num_rows($query_run) > 0) {
-                while ($row = mysqli_fetch_assoc($query_run)) {
-              ?>
-                <div class="service-container wow fadeInDown" data-wow-delay=".5s">
-                  <div class="service-content text-center">
-                    <div class="hexagon">
-                      <?php
-                      $encoded = base64_encode($row['id']);
-                      echo "<a href='service-single.php?id=" . $encoded . "'>" . $row['icon_svg'] . "</a>"
-                      ?>
-                    </div>
-                    <h3> <?php echo $row['service_name']; ?> </h3>
-                    <p class="service-short-desc">
-                      <?php echo $row['short_desc']; ?>
-                    </p>
-                  </div>
-                </div>
-              <?php
-                }
-              }
-              ?>
-            </div>
-            <!--/ End first service -->
-
-
-            <!-- Services end -->
-          </div>
-          <!--/ 1st container end -->
-
-          <div class="gap-60"></div>
+      </div>
+        <!--/ container end -->
     </section>
-    <!--/ Main container end -->
+    <!-- Blog details page end -->
 
+    <div class="gap-40"></div>
 
     <?php
     include('footer.php');

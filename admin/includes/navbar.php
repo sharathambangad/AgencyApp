@@ -71,6 +71,13 @@
      </li>
 
      <li class="nav-item">
+       <a class="nav-link" href="blogs.php">
+         <i class="fas fa-fw fa-blog"></i>
+         <span>Blogs</span></a>
+     </li>
+
+
+     <li class="nav-item">
        <a class="nav-link" href="address.php">
          <i class="fas fa-fw fa-info-circle"></i>
          <span>About Us</span></a>

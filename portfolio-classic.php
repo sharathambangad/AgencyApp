@@ -1,3 +1,8 @@
+<?php
+include('admin/config/dbconfig.php');
+$portfolio_image_path = "admin/uploads/images/portfolio/";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +10,7 @@
   <!-- Basic Page Needs
 	================================================== -->
   <meta charset="utf-8" />
-  <title>BizCraft - Responsive Html5 Template</title>
+  <title>ClickForDern-Portfolio</title>
   <meta name="description" content="" />
   <meta name="author" content="" />
 
@@ -88,7 +93,7 @@
                 <a href="career.php">Career</a>
               </li>
               <li class="dropdown">
-                <a href="blog-rightside.html">Blog </a>
+                <a href="blog.php">Blog </a>
               </li>
               <li class="dropdown">
                 <a href="about-us.php">About Us </a>
@@ -105,12 +110,12 @@
     <!--/ Header end -->
 
     <div id="banner-area">
-      <img src="images/banner/banner2.jpg" alt="" />
+      <img src="images/banner/portfoliopage.jpg" style="width:100%;" alt="" />
       <div class="parallax-overlay"></div>
       <!-- Subpage title start -->
       <div class="banner-title-content">
         <div class="text-center">
-          <h2>Portfolio Classic</h2>
+          <h2>Portfolio</h2>
           <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>
             <li>Portfolio</li>
@@ -130,18 +135,28 @@
 
         <div class="row">
           <div id="isotope" class="isotope">
-            <div class="col-sm-3 isotope-item">
-              <div class="grid">
-                <figure class="effect-oscar">
-                  <img src="images/portfolio/portfolio1.jpg" alt="" />
-                  <figcaption>
-                    <h3>Startup Business</h3>
+            <?php
+            $query = "SELECT * FROM portfolio";
+            $query_run = mysqli_query($connection, $query);
 
-                    <a class="view icon-pentagon" data-rel="prettyPhoto" href="images/portfolio/portfolio1.jpg"><i class="fa fa-search"></i></a>
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
+            if (mysqli_num_rows($query_run) > 0) {
+              while ($row = mysqli_fetch_assoc($query_run)) {
+            ?>
+                <div class="col-sm-3 isotope-item">
+                  <div class="grid">
+                    <figure class="effect-oscar">
+                      <?php echo '<img src="' . $portfolio_image_path . $row['client_image'] . '" alt="PORTFOLIO" />' ?>
+                      <figcaption>
+                        <h3><?php echo $row['client_name']; ?></h3>
+                        <a class="view icon-pentagon" data-rel="prettyPhoto" href=<?php echo '"' . $portfolio_image_path . $row['client_image'] . '"' ?>><i class="fa fa-search"></i></a>
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+            <?php
+              }
+            }
+            ?>
           </div>
           <!-- Isotope content end -->
         </div>

@@ -23,7 +23,7 @@ $total_pages = ceil($total_rows / $limit);
   <!-- Basic Page Needs
 	================================================== -->
   <meta charset="utf-8" />
-  <title>BizCraft - Responsive Html5 Template</title>
+  <title>ClickForDern-Career</title>
   <meta name="description" content="" />
   <meta name="author" content="" />
 
@@ -109,7 +109,7 @@ $total_pages = ceil($total_rows / $limit);
                 <a href="career.php">Career</a>
               </li>
               <li class="dropdown">
-                <a href="blog-rightside.html">Blog </a>
+                <a href="blog.php">Blog </a>
               </li>
               <li class="dropdown">
                 <a href="about-us.php">About Us </a>
@@ -126,7 +126,7 @@ $total_pages = ceil($total_rows / $limit);
     <!--/ Header end -->
 
     <div id="banner-area">
-      <img src="images/banner/banner2.jpg" alt="" />
+      <img src="images/banner/careerpage.jpg" style="width:100%;" alt="" />
       <div class="parallax-overlay"></div>
       <!-- Subpage title start -->
       <div class="banner-title-content">
