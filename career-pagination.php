@@ -3,21 +3,19 @@
 include('admin/config/dbconfig.php');
 $career_image_path = "admin/uploads/images/career/";
 
-$limit = 2;
+$sql = "SELECT * FROM careers";
+$result = $connection->query($sql);
 
-if (isset($_GET["page"])) {
-    $page_number  = $_GET["page"];
-} else {
-    $page_number = 1;
-};
+if ($result->num_rows > 0) {
+    $rowsPerPage = 1;
+    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $startIndex = ($currentPage - 1) * $rowsPerPage;
 
-$initial_page = ($page_number - 1) * $limit;
+    $sql .= " LIMIT $startIndex, $rowsPerPage";
+    $result = $connection->query($sql);
 
-$sql = "SELECT * FROM careers ORDER BY post_date DESC LIMIT $initial_page, $limit";
-
-$result = mysqli_query($connection, $sql);
-
-while ($row = mysqli_fetch_array($result)) {
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
 
 ?>
     <div class="post">
@@ -41,5 +39,7 @@ while ($row = mysqli_fetch_array($result)) {
 
 
 <?php
-};
+        }
+    }
+}
 ?>

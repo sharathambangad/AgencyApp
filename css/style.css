@@ -2771,7 +2771,7 @@ h4.panel-title a.collapsed:before {
 
 .grid-container {
 	display: grid;
-	/* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	gap: 20px;
 }
@@ -2779,8 +2779,8 @@ h4.panel-title a.collapsed:before {
 .post{
 	padding: 10px;
 	text-align: center;
-  	/* margin: 0 0 40px; */
-  	/* padding: 0 0 40px; */
+  	margin: 0 0 40px;
+  	padding: 0 0 40px;
   	border-bottom: 1px solid #F5F5F5;
 }
 

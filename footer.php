@@ -14,46 +14,6 @@ $flickr_image_path = "admin/uploads/images/flickr/";
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.78033362144092!2d76.08781087222934!3d11.00216597921634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7caa72c9ac2c5%3A0xa48df6695e99c8a3!2sKolathur%20-%20Malappuram%20Rd%2C%20Kodur%2C%20Kerala%20676504!5e0!3m2!1sen!2sin!4v1635695355070!5m2!1sen!2sin" width="100%" height="290px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
-
-                <!-- <div class="latest-post-items media">
-                    <div class="latest-post-content media-body">
-                        <h4>
-                            <a href="#">Bulgaria claims to find Europe's 'oldest town'</a>
-                        </h4>
-                        <p class="post-meta">
-                            <span class="author">Posted by John Doe</span>
-                            <span class="post-meta-cat">in<a href="#"> Blog</a></span>
-                        </p>
-                    </div>
-                </div> -->
-                <!-- 1st Latest Post end -->
-
-                <!-- <div class="latest-post-items media">
-                    <div class="latest-post-content media-body">
-                        <h4>
-                            <a href="#">Few Answers in Case of Murdered Law Professor</a>
-                        </h4>
-                        <p class="post-meta">
-                            <span class="date"><i class="icon icon-calendar"></i> Mar 15, 2015</span>
-                            <span class="post-meta-comments"><i class="icon icon-bubbles4"></i>
-                                <a href="#">03</a></span>
-                        </p>
-                    </div>
-                </div> -->
-                <!-- 2nd Latest Post end -->
-
-                <!-- <div class="latest-post-items media">
-                    <div class="latest-post-content media-body">
-                        <h4>
-                            <a href="#">Over the year we have lots of experience in our field</a>
-                        </h4>
-                        <p class="post-meta">
-                            <span class="date"><i class="icon icon-calendar"></i> Apr 17, 2015</span>
-                            <span class="post-meta-comments"><i class="icon icon-bubbles4"></i>
-                                <a href="#">14</a></span>
-                        </p>
-                    </div>
-                </div> -->
                 <!-- 3rd Latest Post end -->
             </div>
             <!--/ End Recent Posts-->
@@ -64,7 +24,7 @@ $flickr_image_path = "admin/uploads/images/flickr/";
                 <div class="img-gallery">
                     <div class="img-container">
                         <?php
-                            $query = "SELECT * FROM flickr_images";
+                            $query = "SELECT * FROM recent_works";
                             $query_run = mysqli_query($connection, $query);
                             if (mysqli_num_rows($query_run) > 0) {
                             while ($row = mysqli_fetch_assoc($query_run)) {

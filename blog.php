@@ -145,14 +145,19 @@ $blog_image_path = "admin/uploads/images/blogs/";
                 while ($row = mysqli_fetch_assoc($query_run)) {
               ?>
                   <div class="service-container">
-                    <div class="service-content text-center">
+                    <div class="blog-content text-center">
                       <div class="hexagon">
                         <?php
                         echo '<img src="' . $blog_image_path . $row['blog_db_image'] . '" class="img-responsive" alt="" />'
                         ?>
                         <span class="blog-date"> <?php echo $row['blog_db_date']; ?></span>
                       </div>
-                      <h3> <?php echo $row['blog_title']; ?> </h3>
+                      <div class="post-header clearfix">
+                        <h2 class="post-title">
+                          <?php echo $row['blog_title']; ?>
+                        </h2>
+                      </div>
+
                       <p class="service-short-desc">
                         <?php echo $row['description']; ?>
                       </p>

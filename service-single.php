@@ -1,5 +1,6 @@
 <?php
 include('admin/config/dbconfig.php');
+$service_image_path = "admin/uploads/images/services/";
 $id = $_GET['id'];
 $unmasked_id = base64_decode($id);
 $query = "SELECT * FROM service WHERE id='$unmasked_id'";
@@ -16,7 +17,7 @@ if (mysqli_num_rows($query_run) > 0) {
 	<!-- Basic Page Needs
 	================================================== -->
 	<meta charset="utf-8">
-	
+
 	<title><?php echo $row['service_name'] . "-ClickForDern" ?></title>
 	<meta name="description" content="<?php echo $row['description'] ?>">
 	<meta name="keywords" content="<?php echo $row['seo_keywords'] ?>">
@@ -143,9 +144,9 @@ if (mysqli_num_rows($query_run) > 0) {
 						<div class="portfolio-slider">
 							<div class="flexportfolio flexslider">
 								<ul class="slides">
-									<li><img src="images/portfolio/portfolio-bg1.jpg" alt=""></li>
-									<li><img src="images/portfolio/portfolio-bg2.jpg" alt="" /></li>
-									<li><img src="images/portfolio/portfolio-bg3.jpg" alt="" /></li>
+									<li>
+										<?php echo '<img src="' . $service_image_path . $row['service_image'] . '" alt="Service Image">' ?>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -156,9 +157,6 @@ if (mysqli_num_rows($query_run) > 0) {
 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 						<div class="sidebar">
 							<div class="portfolio-desc">
-								<h3 class="widget-title"><?php echo $row['service_name']; ?></h3>
-								<p><?php echo $row['short_desc']; ?></p>
-								<br />
 								<h3 class="widget-title"><?php echo $row['service_name']; ?></h3>
 								<p style=" text-align: justify;text-justify: inter-word;">
 									<?php echo $row['description']; ?>

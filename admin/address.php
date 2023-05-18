@@ -23,7 +23,7 @@ $image_upload_path = "uploads/images/flickr/";
 
                     <div class="table-responsive" id="flickr_table">
                         <?php
-                        $query = "SELECT * FROM flickr_images";
+                        $query = "SELECT * FROM recent_works";
                         $query_run = mysqli_query($connection, $query);
                         ?>
                         <table class="table table-bordered table-striped table-hover text-center" id="dataTable" width="100%" cellspacing="0">
@@ -49,11 +49,11 @@ $image_upload_path = "uploads/images/flickr/";
 
                                                 <form action="form-action.php" method="POST" enctype="multipart/form-data">
                                                     <div class="form-group">
-                                                        <input type="file" name="flickr_image" class="form-control" Required>
-                                                        <input type="hidden" name="flickr_img_id" value="<?php echo $row['id']; ?>">
+                                                        <input type="file" name="recent_image" class="form-control" Required>
+                                                        <input type="hidden" name="recent_img_id" value="<?php echo $row['id']; ?>">
 
                                                     </div>
-                                                    <button type="submit" name="update_flikr_img_btn" class="btn btn-success float-right">Update</button>
+                                                    <button type="submit" name="update_recent_img_btn" class="btn btn-success float-right">Update</button>
                                                     <a href="address.php" class="btn btn-secondary float-right mr-1"> Cancel </a>
 
                                                 </form>

@@ -2,17 +2,17 @@
 include('admin/config/dbconfig.php');
 $career_image_path = "admin/uploads/images/career/";
 
-$limit = 2;
+$rowsPerPage = 1;
 
-$query = "SELECT COUNT(*) FROM careers";
+$query = "SELECT COUNT(*) AS total FROM careers";
 
 $result = mysqli_query($connection, $query);
 
-$row = mysqli_fetch_row($result);
+$row = $result->fetch_assoc();
 
-$total_rows = $row[0];
+$total_rows = $row['total'];
 
-$total_pages = ceil($total_rows / $limit);
+$total_pages = ceil($total_rows / $rowsPerPage);
 
 ?>
 

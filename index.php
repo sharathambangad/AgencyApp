@@ -53,23 +53,6 @@
 </head>
 
 <body>
-  <!-- Style switcher start -->
-  <!-- <div class="style-switch-wrapper">
-      <div class="style-switch-button">
-        <i class="fa fa-sliders"></i>
-      </div>
-      <h3>Style Options</h3>
-      <button id="preset1" class="btn btn-sm btn-primary"></button>
-      <button id="preset2" class="btn btn-sm btn-primary"></button>
-      <button id="preset3" class="btn btn-sm btn-primary"></button>
-      <button id="preset4" class="btn btn-sm btn-primary"></button>
-      <button id="preset5" class="btn btn-sm btn-primary"></button>
-      <button id="preset6" class="btn btn-sm btn-primary"></button>
-      <br /><br />
-      <a class="btn btn-sm btn-primary close-styler pull-right">Close X</a>
-    </div> -->
-  <!-- Style switcher end -->
-
   <div class="body-inner">
     <!-- Header start -->
     <header id="header" class="navbar-fixed-top header2" role="banner">
@@ -189,11 +172,6 @@
                   </h3>
                   <div class="">
                     <a class="animated4 slider btn btn-primary btn-min-block white" href="contact.php">Call Now</a>
-                    <!-- <a
-                        class="animated4 slider btn btn-primary btn-min-block solid"
-                        href="#"
-                        >Live Demo</a
-                      > -->
                   </div>
                 </div>
               </div>

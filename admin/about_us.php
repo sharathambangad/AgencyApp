@@ -34,11 +34,6 @@ $image_upload_path = "uploads/images/";
                                     <th> Name </th>
                                     <th> Designation </th>
                                     <th> Image </th>
-                                    <!-- <th> Email </th>
-                                    <th> Facebook </th>
-                                    <th> Instagram </th>
-                                    <th> LinkedIn </th>
-                                    <th> twitter </th> -->
                                     <th>Update</th>
                                     <th>Move to Trash</th>
                                 </tr>

@@ -790,21 +790,21 @@ if (isset($_POST['update_address_btn'])) {
 
 /* FLICKR IMAGES*/
 
-if (isset($_POST['update_flikr_img_btn'])) {
+if (isset($_POST['update_recent_img_btn'])) {
 
-    $flickr_img_id = mysqli_real_escape_string($connection, $_POST['flickr_img_id']);
-    $edit_image = $_FILES['flickr_image']['name'];
+    $recent_img_id = mysqli_real_escape_string($connection, $_POST['recent_img_id']);
+    $edit_image = $_FILES['recent_image']['name'];
 
 
-    $image_query = "SELECT * from flickr_images WHERE id = '$flickr_img_id'";
+    $image_query = "SELECT * from recent_works WHERE id = '$recent_img_id'";
     $image_query_run = mysqli_query($connection, $image_query);
 
     foreach ($image_query_run as $image_row) {
         $file_name = $image_row['image'];
         if ($edit_image != NULL) {
 
-            $file_extension = pathinfo($_FILES["flickr_image"]["name"], PATHINFO_EXTENSION);
-            $fileinfo = @getimagesize($_FILES["flickr_image"]["tmp_name"]);
+            $file_extension = pathinfo($_FILES["recent_image"]["name"], PATHINFO_EXTENSION);
+            $fileinfo = @getimagesize($_FILES["recent_image"]["tmp_name"]);
             $width = $fileinfo[0];
             $height = $fileinfo[1];
 
@@ -815,7 +815,7 @@ if (isset($_POST['update_flikr_img_btn'])) {
                 $_SESSION['status_code'] = "warning";
                 header('Location: address.php');
                 exit(0);
-            } elseif ($_FILES["flickr_image"]["size"] > 2097152) {
+            } elseif ($_FILES["recent_image"]["size"] > 2097152) {
 
                 $_SESSION['status'] = "Image size exceeds 2MB";
                 $_SESSION['status_code'] = "warning";
@@ -831,7 +831,7 @@ if (isset($_POST['update_flikr_img_btn'])) {
             //update with new image and delete old image
             elseif ($image_path = $image_upload_path . "flickr/" . $image_row['image']) {
                 unlink($image_path);
-                $info = pathinfo($_FILES['flickr_image']['name']);
+                $info = pathinfo($_FILES['recent_image']['name']);
                 $ext = $info['extension'];
                 $file_name = time() . '.' . $ext;
             }
@@ -839,7 +839,7 @@ if (isset($_POST['update_flikr_img_btn'])) {
     }
 
 
-    $query = "UPDATE flickr_images SET image='$file_name' WHERE id = '$flickr_img_id'";
+    $query = "UPDATE recent_works SET image='$file_name' WHERE id = '$recent_img_id'";
     $query_run = mysqli_query($connection, $query);
 
     if ($query_run) {
@@ -848,7 +848,7 @@ if (isset($_POST['update_flikr_img_btn'])) {
             $_SESSION['status_code'] = "success";
             header('Location: address_us.php');
         } else {
-            move_uploaded_file($_FILES['flickr_image']['tmp_name'], $image_upload_path . "flickr/" . $file_name);
+            move_uploaded_file($_FILES['recent_image']['tmp_name'], $image_upload_path . "flickr/" . $file_name);
             $_SESSION['status'] = "Flickr Imagee Updated Successfully";
             $_SESSION['status_code'] = "success";
             header('Location: address.php');
